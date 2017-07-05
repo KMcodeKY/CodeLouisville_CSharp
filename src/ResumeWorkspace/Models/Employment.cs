@@ -17,7 +17,7 @@ namespace ResumeWorkspace.Models
 
         [Required]
         public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
         [Required]
         public string Employer { get; set; }
         public string Description { get; set; }

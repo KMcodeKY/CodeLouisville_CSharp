@@ -10,17 +10,21 @@ namespace ResumeWorkspace
 {
     public class Context : DbContext
     {
+
         public Context()
         {
-            Database.SetInitializer(new DatabaseInitializer());
         }
+        
+        public DbSet<Employment> Employment { get; set; }
+        public DbSet<Position> Position { get; set; }
+        public DbSet<Accomplishment> Accomplishment { get; set; }
+        public DbSet<Contact> Contact { get; set; }
 
-        public DbSet<Employment> EmploymentWorkspace { get; set; }
-        public DbSet<Education> EducationWorkspace { get; set; }
-        public DbSet<Certification> CertificationWorkspace { get; set; }
-        public DbSet<Skill> SkillWorkspace { get; set; }
-        public DbSet<Affiliation> AffiliationWorkspace { get; set; }
-
+        public DbSet<Education> Education { get; set; }
+        public DbSet<Certification> Certification { get; set; }
+        public DbSet<Skill> Skill { get; set; }
+        public DbSet<Affiliation> Affiliation { get; set; }
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
