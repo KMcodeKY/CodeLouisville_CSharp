@@ -12,9 +12,8 @@ namespace ResumeWorkspace.Controllers
 
         public ActionResult Index()
         {
-            var empList = db.Employment.ToList();
-            var eduList = db.Education.ToList();
-            return View(empList);
+            var perList = db.Person.ToList();
+            return View(perList);
         }
 
         public ActionResult About()

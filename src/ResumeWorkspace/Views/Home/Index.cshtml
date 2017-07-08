@@ -1,11 +1,14 @@
-﻿@model List<ResumeWorkspace.Models.Employment>
+﻿@model List<ResumeWorkspace.Models.Person>
 @{
     ViewBag.Title = "Home Page";
 }
 
-   @foreach (var emp in Model)
+   @foreach (var per in Model)
    {
-    <h1>@emp.Positions</h1>
+        foreach (var emp in per.EmploymentHistory)
+        {
+           <h1>@emp.Employer</h1>
+        }
    }
 
 <div class="jumbotron">
