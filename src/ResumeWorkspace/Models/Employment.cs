@@ -14,6 +14,7 @@ namespace ResumeWorkspace.Models
         }
 
         public int Id { get; set; }
+        public int PersonId { get; set; }
 
         [Required]
         public DateTime StartDate { get; set; }
@@ -27,6 +28,8 @@ namespace ResumeWorkspace.Models
         public string State { get; set; }
         public string Zip { get; set; }
         public virtual ICollection<Position> Positions { get; set; }
+
+        public virtual Person Person { get; set; }
 
         public void AddPosition(Position position)
         {

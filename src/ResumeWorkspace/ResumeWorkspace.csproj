@@ -159,6 +159,7 @@
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Education.cs" />
     <Compile Include="Models\Employment.cs" />
+    <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\Skill.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

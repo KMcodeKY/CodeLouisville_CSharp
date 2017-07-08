@@ -13,6 +13,11 @@ namespace ResumeWorkspace
 
         protected override void Seed(Context context)
         {
+            var person1 = new Person()
+            {
+                Name = "Alex Jones"
+            };
+
             var employment1 = new Employment()
             {
                 StartDate = new DateTime(2000, 1, 1),
@@ -139,8 +144,11 @@ namespace ResumeWorkspace
             employment2.AddPosition(position3);
             employment2.AddPosition(position4);
 
-            context.Employment.Add(employment1);
-            context.Employment.Add(employment2);
+            person1.AddEmployment(employment1);
+            person1.AddEmployment(employment2);
+
+            //context.Employment.Add(employment1);
+            //context.Employment.Add(employment2);
 
             var education1 = new Education()
             {
@@ -171,8 +179,11 @@ namespace ResumeWorkspace
                 Accomplishments = "Clubs, Awards, etc..."
             };
 
-            context.Education.Add(education1);
-            context.Education.Add(education2);
+            person1.AddEducation(education1);
+            person1.AddEducation(education2);
+
+            //context.Education.Add(education1);
+            //context.Education.Add(education2);
 
             var certification1 = new Certification()
             {
@@ -191,8 +202,11 @@ namespace ResumeWorkspace
                 Description = "Foundational IT skills across a variety of devices and operating systems"
             };
 
-            context.Certification.Add(certification1);
-            context.Certification.Add(certification2);
+            person1.AddCertification(certification1);
+            person1.AddCertification(certification2);
+
+            //context.Certification.Add(certification1);
+            //context.Certification.Add(certification2);
 
             var skill1 = new Skill()
             {
@@ -206,8 +220,11 @@ namespace ResumeWorkspace
                 Description = "C#/.Net Framework"
             };
 
-            context.Skill.Add(skill1);
-            context.Skill.Add(skill2);
+            person1.AddSkill(skill1);
+            person1.AddSkill(skill2);
+
+            //context.Skill.Add(skill1);
+            //context.Skill.Add(skill2);
 
             var affiliation1 = new Affiliation()
             {
@@ -227,8 +244,13 @@ namespace ResumeWorkspace
                 Description = "Student tutor"
             };
 
-            context.Affiliation.Add(affiliation1);
-            context.Affiliation.Add(affiliation2);
+            person1.AddAffiliation(affiliation1);
+            person1.AddAffiliation(affiliation2);
+
+            //context.Affiliation.Add(affiliation1);
+            //context.Affiliation.Add(affiliation2);
+
+            context.Person.Add(person1);
 
             context.SaveChanges();
 

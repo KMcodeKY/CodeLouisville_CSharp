@@ -8,6 +8,7 @@ namespace ResumeWorkspace.Models
     public class Education
     {
         public int Id { get; set; }
+        public int PersonId { get; set; }
 
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }
@@ -20,5 +21,7 @@ namespace ResumeWorkspace.Models
         public string Degree { get; set; }
         public double GPA { get; set; }
         public string Accomplishments { get; set; }
+
+        public virtual Person Person { get; set; }
     }
 }

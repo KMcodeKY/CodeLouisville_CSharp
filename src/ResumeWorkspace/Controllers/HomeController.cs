@@ -8,11 +8,13 @@ namespace ResumeWorkspace.Controllers
 {
     public class HomeController : Controller
     {
+        private Context db = new Context();
 
         public ActionResult Index()
         {
-
-            return View();
+            var empList = db.Employment.ToList();
+            var eduList = db.Education.ToList();
+            return View(empList);
         }
 
         public ActionResult About()

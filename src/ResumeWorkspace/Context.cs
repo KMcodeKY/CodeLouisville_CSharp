@@ -10,11 +10,8 @@ namespace ResumeWorkspace
 {
     public class Context : DbContext
     {
+        public DbSet<Person> Person { get; set; }
 
-        public Context()
-        {
-        }
-        
         public DbSet<Employment> Employment { get; set; }
         public DbSet<Position> Position { get; set; }
         public DbSet<Accomplishment> Accomplishment { get; set; }
