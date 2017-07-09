@@ -26,5 +26,28 @@ namespace ResumeWorkspace
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
+
+        public Employment GetEmployment(int id)
+        {
+            return (from x in Employment where x.Id == id select x).First();
+        }
+
+        public void AddEmployment(Employment employment)
+        {
+            Employment.Add(employment);
+            this.SaveChanges();
+        }
+
+        public void EditEmployment(Employment employment)
+        {
+            this.Entry(employment).State = EntityState.Modified;
+            this.SaveChanges();
+        }
+
+        public void DeleteEmployment(Employment employment)
+        {
+            this.Entry(employment).State = EntityState.Deleted;
+            this.SaveChanges();
+        }
     }
 }

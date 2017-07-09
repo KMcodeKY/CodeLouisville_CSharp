@@ -1,7 +1,70 @@
-﻿@{
-    ViewBag.Title = "About";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿@model List<ResumeWorkspace.Models.Person>
 
-<p>Use this area to provide additional information.</p>
+@foreach (var per in Model)
+{
+    <h1 class="section-header">Employment</h1>
+
+    <div class="pull-right">
+        <a href="@Url.Action("AddEmployment")" class="btn btn-warning btn-sm margin-right">
+            <span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> Add Employment</span>
+        </a>
+    </div>
+    
+    foreach (var emp in per.EmploymentHistory)
+    {
+        <h2>@emp.Employer</h2>
+
+        <div class="pull-right">
+            <a href="@Url.Action("EditEmployment", new { id = @emp.Id })" class="btn btn-warning btn-sm margin-right">
+                <span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> Edit</span>
+            </a>
+            <a href="@Url.Action("DeleteEmployment", new { id = @emp.Id })" class="btn btn-warning btn-sm margin-right">
+                <span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> Delete</span>
+            </a>
+        </div>
+
+        <h2>@emp.Address</h2>
+        <h2>@emp.City, @emp.State  @emp.Zip</h2>
+        <h2>Website: @emp.Website</h2>
+        <h3 class="field-description">@emp.Description</h3>
+        <h3>Start Date: @emp.StartDate End Date: @emp.EndDate</h3>
+        foreach (var pos in emp.Positions)
+        {
+            <h2>@pos.Title</h2>
+            <h3>Start Date: @emp.StartDate End Date: @emp.EndDate</h3>
+            foreach (var acc in pos.Accomplishments)
+            {
+                <h3>@acc.Description</h3>
+            }
+            foreach (var con in pos.Contacts)
+            {
+                <h3>@con.Name</h3>
+                <h3>@con.Title</h3>
+                <h3>@con.Email</h3>
+                <h3>@con.Phone</h3>
+            }
+
+        }
+
+    }
+    <h1 class="section-header">Education</h1>
+    foreach (var edu in per.EducationHistory)
+    {
+        <h3>@edu.Institution - @edu.Degree</h3>
+    }
+    <h1 class="section-header">Certifications</h1>
+    foreach (var cer in per.CertificationHistory)
+    {
+        <h3>@cer.Organization - @cer.Type</h3>
+    }
+    <h1 class="section-header">Skills</h1>
+    foreach (var skl in per.SkillHistory)
+    {
+        <h3>@skl.Type</h3>
+    }
+    <h1 class="section-header">Affiliations</h1>
+    foreach (var afl in per.AffiliationHistory)
+    {
+        <h3>@afl.Organization - @afl.Type</h3>
+    }
+}

@@ -210,6 +210,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\_Employment.cshtml" />
+    <Content Include="Views\Home\AddEmployment.cshtml" />
+    <Content Include="Views\Home\EditEmployment.cshtml" />
+    <Content Include="Views\Home\DeleteEmployment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
