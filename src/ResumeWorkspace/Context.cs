@@ -32,9 +32,36 @@ namespace ResumeWorkspace
             return (from x in Employment where x.Id == id select x).First();
         }
 
+        public Position GetPosition(int id)
+        {
+            return (from x in Position where x.Id == id select x).First();
+        }
+
+        public Accomplishment GetAccomplishment(int id)
+        {
+            return (from x in Accomplishment where x.Id == id select x).First();
+        }
+
+        public Contact GetContact(int id)
+        {
+            return (from x in Contact where x.Id == id select x).First();
+        }
+
         public void AddEmployment(Employment employment)
         {
             Employment.Add(employment);
+            this.SaveChanges();
+        }
+
+        public void AddAccomplishment(Accomplishment accomplishment)
+        {
+            Accomplishment.Add(accomplishment);
+            this.SaveChanges();
+        }
+
+        public void AddContact(Contact contact)
+        {
+            Contact.Add(contact);
             this.SaveChanges();
         }
 
@@ -44,9 +71,38 @@ namespace ResumeWorkspace
             this.SaveChanges();
         }
 
+        public void EditPosition(Position position)
+        {
+            this.Entry(position).State = EntityState.Modified;
+
+            foreach (var acc in position.Accomplishments)
+            {
+                this.Entry(acc).State = EntityState.Modified;
+            }
+
+            foreach (var con in position.Contacts)
+            {
+                this.Entry(con).State = EntityState.Modified;
+            }
+
+            this.SaveChanges();
+        }
+
         public void DeleteEmployment(Employment employment)
         {
             this.Entry(employment).State = EntityState.Deleted;
+            this.SaveChanges();
+        }
+
+        public void DeleteAccomplishment(Accomplishment accomplishment)
+        {
+            this.Entry(accomplishment).State = EntityState.Deleted;
+            this.SaveChanges();
+        }
+
+        public void DeleteContact(Contact contact)
+        {
+            this.Entry(contact).State = EntityState.Deleted;
             this.SaveChanges();
         }
     }

@@ -19,8 +19,8 @@ namespace ResumeWorkspace.Models
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public string Title { get; set; }
-        public virtual ICollection<Accomplishment> Accomplishments { get; set; }
-        public virtual ICollection<Contact> Contacts { get; set; }
+        public virtual List<Accomplishment> Accomplishments { get; set; }
+        public virtual List<Contact> Contacts { get; set; }
 
         public virtual Employment Employment { get; set; }
 

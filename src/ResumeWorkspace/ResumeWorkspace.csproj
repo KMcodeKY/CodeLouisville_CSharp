@@ -148,11 +148,17 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Context.cs" />
+    <Compile Include="Controllers\AffiliationController.cs" />
+    <Compile Include="Controllers\CertificationController.cs" />
+    <Compile Include="Controllers\EducationController.cs" />
+    <Compile Include="Controllers\EmploymentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SkillController.cs" />
     <Compile Include="DatabaseInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HTMLHelper.cs" />
     <Compile Include="Models\Accomplishment.cs" />
     <Compile Include="Models\Affiliation.cs" />
     <Compile Include="Models\Certification.cs" />
@@ -210,10 +216,28 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\_Employment.cshtml" />
-    <Content Include="Views\Home\AddEmployment.cshtml" />
-    <Content Include="Views\Home\EditEmployment.cshtml" />
-    <Content Include="Views\Home\DeleteEmployment.cshtml" />
+    <Content Include="Views\Employment\_Employment.cshtml" />
+    <Content Include="Views\Employment\AddEmployment.cshtml" />
+    <Content Include="Views\Employment\EditEmployment.cshtml" />
+    <Content Include="Views\Employment\DeleteEmployment.cshtml" />
+    <Content Include="Views\Education\_Education.cshtml" />
+    <Content Include="Views\Certification\_Certification.cshtml" />
+    <Content Include="Views\Skill\_Skill.cshtml" />
+    <Content Include="Views\Affiliation\_Affiliation.cshtml" />
+    <Content Include="Views\Education\AddEducation.cshtml" />
+    <Content Include="Views\Education\DeleteEducation.cshtml" />
+    <Content Include="Views\Education\EditEducation.cshtml" />
+    <Content Include="Views\Certification\AddCertification.cshtml" />
+    <Content Include="Views\Certification\EditCertification.cshtml" />
+    <Content Include="Views\Certification\DeleteCertification.cshtml" />
+    <Content Include="Views\Affiliation\AddAffiliation.cshtml" />
+    <Content Include="Views\Affiliation\DeleteAffiliation.cshtml" />
+    <Content Include="Views\Affiliation\EditAffiliation.cshtml" />
+    <Content Include="Views\Skill\AddSkill.cshtml" />
+    <Content Include="Views\Skill\EditSkill.cshtml" />
+    <Content Include="Views\Skill\DeleteSkill.cshtml" />
+    <Content Include="Views\Employment\_Position.cshtml" />
+    <Content Include="Views\Employment\EditPosition.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

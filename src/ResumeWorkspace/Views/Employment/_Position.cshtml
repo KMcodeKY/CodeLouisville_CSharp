@@ -1,0 +1,95 @@
+﻿@model ResumeWorkspace.Models.Position
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+
+        <div class="col-md-6">
+
+                @Html.HiddenFor(m => m.EmploymentId)
+                @Html.HiddenFor(m => m.Id)
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Title, new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.StartDate, new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.StartDate, "{0:d}", new { @class = "form-control datepicker" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.EndDate, new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.EndDate, "{0:d}", new { @class = "form-control datepicker" })
+                </div>
+
+            <h2>Accomplishments</h2>
+            <div class="pull-right">
+                <a href="@Url.Action("AddAccomplishment","Employment", new { id = Model.Id })" class="btn btn-warning btn-sm margin-right">
+                    <span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> Add</span>
+                </a>
+            </div>
+
+            @for (int i = 0; i < Model.Accomplishments.Count(); i++)
+            {
+                using (Html.BeginCollectionItem("Accomplishments"))
+                {
+                <div class="form-group">
+                    @Html.HiddenFor(m => m.Accomplishments.ElementAt(i).Id)
+                    @Html.HiddenFor(m => m.Accomplishments.ElementAt(i).PositionId)
+
+                    @Html.TextAreaFor(m => m.Accomplishments.ElementAt(i).Description)
+                </div>
+                }
+
+                    <div class="pull-right">
+                        <a href="@Url.Action("DeleteAccomplishment", "Employment", new { id = Model.Accomplishments.ElementAt(i).Id })" class="btn btn-warning btn-sm margin-right">
+                            <span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> Delete</span>
+                        </a>
+                    </div>
+                }
+
+            <h2>Contacts</h2>
+            <div class="pull-right">
+                <a href="@Url.Action("AddContact","Employment", new { id = Model.Id, model = Model })" class="btn btn-warning btn-sm margin-right">
+                    <span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> Add</span>
+                </a>
+            </div>
+            @for (int i = 0; i < Model.Contacts.Count(); i++)
+            {
+                using (Html.BeginCollectionItem("Contacts"))
+                {
+                <div class="form-group">
+                    @Html.HiddenFor(m => m.Contacts.ElementAt(i).Id)
+                    @Html.HiddenFor(m => m.Contacts.ElementAt(i).PositionId)
+
+                    @Html.TextBoxFor(m => m.Contacts.ElementAt(i).Name)
+                    @Html.TextBoxFor(m => m.Contacts.ElementAt(i).Title)
+                    @Html.TextBoxFor(m => m.Contacts.ElementAt(i).Email)
+                    @Html.TextBoxFor(m => m.Contacts.ElementAt(i).Phone)
+                </div>
+                }
+
+                    <div class="pull-right">
+                        <a href="@Url.Action("DeleteContact", "Employment", new { id = Model.Contacts.ElementAt(i).Id })" class="btn btn-warning btn-sm margin-right">
+                            <span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> Delete</span>
+                        </a>
+                    </div>
+            }
+
+                    <div class="col-md-12">
+                        <div class="pad-top">
+                            <button type="submit" class="btn btn-success btn-lg margin-right">
+                                <span class="glyphicon glyphicon-save"></span> Save
+                            </button>
+                            <a href="@Url.Action("Index", "Home")" class="btn btn-warning btn-lg">
+                                <span class="glyphicon glyphicon-remove"></span> Cancel
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+</div>
+
+}
