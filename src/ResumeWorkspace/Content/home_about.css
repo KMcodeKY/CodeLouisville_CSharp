@@ -2,9 +2,10 @@
     color: red;
 }
 
+.btn-space {
+    margin-right: 10px;
+}
 
-/*
 .hidden-xs {
     display: inline-block !important;
 }
-    */
