@@ -14,13 +14,16 @@ namespace ResumeWorkspace.Controllers
 
         public ActionResult Index()
         {
-            return View("~/Views/Home/Index.cshtml");
+            Person myPerson = db.Person.SingleOrDefault(user => user.Id == 1);
+            //var perList = db.Person.ToList();
+            return View("~/Views/Home/Index.cshtml", myPerson);
         }
 
         public ActionResult About()
         {
-            var perList = db.Person.ToList();
-            return View("~/Views/Home/About.cshtml", perList);
+            Person myPerson = db.Person.SingleOrDefault(user => user.Id == 1);
+            //var perList = db.Person.ToList();
+            return View("~/Views/Home/About.cshtml", myPerson);
         }
 
         public ActionResult Contact()
