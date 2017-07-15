@@ -6,6 +6,9 @@
 
         <div class="col-md-6">
 
+                @Html.HiddenFor(m => m.PersonId)
+                @Html.HiddenFor(m => m.Id)
+
                 <div class="form-group">
                     @Html.LabelFor(m => m.Type, new { @class = "control-label" })
                     @Html.TextBoxFor(m => m.Type, new { @class = "form-control" })

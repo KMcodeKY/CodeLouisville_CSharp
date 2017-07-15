@@ -219,25 +219,21 @@
     <Content Include="Views\Employment\_Employment.cshtml" />
     <Content Include="Views\Employment\AddEmployment.cshtml" />
     <Content Include="Views\Employment\EditEmployment.cshtml" />
-    <Content Include="Views\Employment\DeleteEmployment.cshtml" />
     <Content Include="Views\Education\_Education.cshtml" />
     <Content Include="Views\Certification\_Certification.cshtml" />
     <Content Include="Views\Skill\_Skill.cshtml" />
     <Content Include="Views\Affiliation\_Affiliation.cshtml" />
     <Content Include="Views\Education\AddEducation.cshtml" />
-    <Content Include="Views\Education\DeleteEducation.cshtml" />
     <Content Include="Views\Education\EditEducation.cshtml" />
     <Content Include="Views\Certification\AddCertification.cshtml" />
     <Content Include="Views\Certification\EditCertification.cshtml" />
-    <Content Include="Views\Certification\DeleteCertification.cshtml" />
     <Content Include="Views\Affiliation\AddAffiliation.cshtml" />
-    <Content Include="Views\Affiliation\DeleteAffiliation.cshtml" />
     <Content Include="Views\Affiliation\EditAffiliation.cshtml" />
     <Content Include="Views\Skill\AddSkill.cshtml" />
     <Content Include="Views\Skill\EditSkill.cshtml" />
-    <Content Include="Views\Skill\DeleteSkill.cshtml" />
     <Content Include="Views\Employment\_Position.cshtml" />
     <Content Include="Views\Employment\EditPosition.cshtml" />
+    <Content Include="Views\Employment\AddPosition.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

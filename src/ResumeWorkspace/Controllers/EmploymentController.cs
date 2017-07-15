@@ -12,6 +12,8 @@ namespace ResumeWorkspace.Controllers
     {
         private Context db = new Context();
 
+        //Employment
+
         public ActionResult AddEmployment()
         {
             var temp = new Employment() { };
@@ -56,12 +58,6 @@ namespace ResumeWorkspace.Controllers
 
             if (employment == null) { return HttpNotFound(); }
 
-            return View("~/Views/Employment/DeleteEmployment.cshtml", employment);
-        }
-
-        [HttpPost]
-        public ActionResult DeleteEmployment(Employment employment)
-        {
             db.DeleteEmployment(employment);
             db.SaveChanges();
             return RedirectToAction("Index", "Home");
@@ -72,7 +68,7 @@ namespace ResumeWorkspace.Controllers
         public ActionResult AddAccomplishment(int? id)
         {
             var temp = new Accomplishment() { };
-            //Includes PositionId for Employment Addition
+            //Includes PositionId for Accomplishment Addition
             Position myPosition = db.Position.SingleOrDefault(user => user.Id == id);
             myPosition.AddAccomplishment(temp);
 
@@ -98,12 +94,10 @@ namespace ResumeWorkspace.Controllers
 
         //Contact
 
-        public ActionResult AddContact(int? id, Position position)
+        public ActionResult AddContact(int? id)
         {
-            RefreshPositionScreen(position);
-
             var temp = new Contact() { };
-            //Includes PositionId for Employment Addition
+            //Includes PositionId for Contact Addition
             Position myPosition = db.Position.SingleOrDefault(user => user.Id == id);
             myPosition.AddContact(temp);
 
@@ -129,6 +123,18 @@ namespace ResumeWorkspace.Controllers
 
         //Position
 
+        public ActionResult AddPosition(int? id)
+        {
+            var temp = new Position() { };
+            temp.StartDate = DateTime.Now;
+
+            //Includes EmploymentId for Position Addition
+            Employment myEmployment = db.Employment.SingleOrDefault(user => user.Id == id);
+            myEmployment.AddPosition(temp);
+            db.AddPosition(temp);
+            return View("~/Views/Employment/EditPosition.cshtml", temp);
+        }
+
         public ActionResult EditPosition(int? id)
         {
             if (id == null) { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
@@ -143,17 +149,23 @@ namespace ResumeWorkspace.Controllers
         [HttpPost]
         public ActionResult EditPosition(Position position)
         {
-            //db.EditPosition(position);
-            //db.SaveChanges();
-            RefreshPositionScreen(position);
+            db.EditPosition(position);
+            db.SaveChanges();
+            //RefreshPositionScreen(position);
             return RedirectToAction("Index", "Home");
         }
 
-        [HttpPost]
-        public void RefreshPositionScreen(Position position)
+        public ActionResult DeletePosition(int? id)
         {
-            db.EditPosition(position);
+            if (id == null) { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+
+            Position position = db.GetPosition((int)id);
+
+            if (position == null) { return HttpNotFound(); }
+
+            db.DeletePosition(position);
             db.SaveChanges();
+            return RedirectToAction("Index", "Home");
         }
 
     }

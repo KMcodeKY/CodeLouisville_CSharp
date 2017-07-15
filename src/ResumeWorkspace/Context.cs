@@ -27,6 +27,8 @@ namespace ResumeWorkspace
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
+        //Get From ID
+
         public Employment GetEmployment(int id)
         {
             return (from x in Employment where x.Id == id select x).First();
@@ -47,9 +49,37 @@ namespace ResumeWorkspace
             return (from x in Contact where x.Id == id select x).First();
         }
 
+        public Affiliation GetAffiliation(int id)
+        {
+            return (from x in Affiliation where x.Id == id select x).First();
+        }
+
+        public Certification GetCertification(int id)
+        {
+            return (from x in Certification where x.Id == id select x).First();
+        }
+
+        public Education GetEducation(int id)
+        {
+            return (from x in Education where x.Id == id select x).First();
+        }
+
+        public Skill GetSkill(int id)
+        {
+            return (from x in Skill where x.Id == id select x).First();
+        }
+
+        //Add
+
         public void AddEmployment(Employment employment)
         {
             Employment.Add(employment);
+            this.SaveChanges();
+        }
+
+        public void AddPosition(Position position)
+        {
+            Position.Add(position);
             this.SaveChanges();
         }
 
@@ -64,6 +94,32 @@ namespace ResumeWorkspace
             Contact.Add(contact);
             this.SaveChanges();
         }
+
+        public void AddAffiliation(Affiliation affiliation)
+        {
+            Affiliation.Add(affiliation);
+            this.SaveChanges();
+        }
+
+        public void AddCertification(Certification certification)
+        {
+            Certification.Add(certification);
+            this.SaveChanges();
+        }
+
+        public void AddEducation(Education education)
+        {
+            Education.Add(education);
+            this.SaveChanges();
+        }
+
+        public void AddSkill(Skill skill)
+        {
+            Skill.Add(skill);
+            this.SaveChanges();
+        }
+
+        //Edit
 
         public void EditEmployment(Employment employment)
         {
@@ -88,9 +144,41 @@ namespace ResumeWorkspace
             this.SaveChanges();
         }
 
+        public void EditAffiliation(Affiliation affiliation)
+        {
+            this.Entry(affiliation).State = EntityState.Modified;
+            this.SaveChanges();
+        }
+
+        public void EditCertification(Certification certification)
+        {
+            this.Entry(certification).State = EntityState.Modified;
+            this.SaveChanges();
+        }
+
+        public void EditEducation(Education education)
+        {
+            this.Entry(education).State = EntityState.Modified;
+            this.SaveChanges();
+        }
+
+        public void EditSkill(Skill skill)
+        {
+            this.Entry(skill).State = EntityState.Modified;
+            this.SaveChanges();
+        }
+
+        //Delete
+
         public void DeleteEmployment(Employment employment)
         {
             this.Entry(employment).State = EntityState.Deleted;
+            this.SaveChanges();
+        }
+
+        public void DeletePosition(Position position)
+        {
+            this.Entry(position).State = EntityState.Deleted;
             this.SaveChanges();
         }
 
@@ -103,6 +191,30 @@ namespace ResumeWorkspace
         public void DeleteContact(Contact contact)
         {
             this.Entry(contact).State = EntityState.Deleted;
+            this.SaveChanges();
+        }
+
+        public void DeleteAffiliation(Affiliation affiliation)
+        {
+            this.Entry(affiliation).State = EntityState.Deleted;
+            this.SaveChanges();
+        }
+
+        public void DeleteCertification(Certification certification)
+        {
+            this.Entry(certification).State = EntityState.Deleted;
+            this.SaveChanges();
+        }
+
+        public void DeleteEducation(Education education)
+        {
+            this.Entry(education).State = EntityState.Deleted;
+            this.SaveChanges();
+        }
+
+        public void DeleteSkill(Skill skill)
+        {
+            this.Entry(skill).State = EntityState.Deleted;
             this.SaveChanges();
         }
     }
