@@ -10,6 +10,16 @@
     padding: 10px;
 }
 
+.section-next-emp {
+    font-size: 1.75em;
+    padding: 10px;
+}
+
+.section-next {
+    font-size: 1em;
+    padding: 10px;
+}
+
 .btn-space {
     margin-right: 10px;
 }

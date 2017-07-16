@@ -4,37 +4,57 @@
     <link href="@Url.Content("~/Content/home_about.css")" rel="stylesheet" type="text/css" />
 }
 
-    <h1 class="section-top visible-xs container">
-        <span class="v-algin"><strong>Employment</strong></span>
-        <a href="@Url.Action("AddEmployment","Employment")" class="btn btn-success btn-lg margin-right pull-right v-algin">
-            <span class="glyphicon glyphicon-plus"></span>
-        </a>
-    </h1>
+            <h1 class="section-top visible-xs container">
+                <span class="v-align"><strong>Employment</strong></span>
+                <a href="@Url.Action("AddEmployment","Employment")" class="btn btn-success btn-lg margin-right pull-right v-align">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
+            </h1>
 
-    <h1 class="section-top hidden-xs container">
-        <span class="v-align"><strong>Employment</strong></span>
-        <a href="@Url.Action("AddEmployment","Employment")" class="btn btn-success btn-lg margin-right pull-right v-align">
-            <span class="glyphicon glyphicon-plus"></span><span>&nbsp; Add Employment</span>
-        </a>
-    </h1>
+            <h1 class="section-top hidden-xs container">
+                <span class="v-align"><strong>Employment</strong></span>
+                <a href="@Url.Action("AddEmployment","Employment")" class="btn btn-success btn-lg margin-right pull-right v-align">
+                    <span class="glyphicon glyphicon-plus"></span><span>&nbsp; Add Employment</span>
+                </a>
+            </h1>
     
     @foreach (var emp in Model.EmploymentHistory)
     {
-            <div class="form-group">
-                <span>@emp.Employer</span>
-                <a href="@Url.Action("DeleteEmployment","Employment", new { id = @emp.Id })" class="btn btn-danger btn-sm margin-right pull-right">
-                    <span class="glyphicon glyphicon-remove"></span><span class="hidden-xs">&nbsp; Delete</span>
-                </a>
-                <a href="@Url.Action("EditEmployment","Employment", new { id = @emp.Id })" class="btn btn-warning btn-sm margin-right pull-right btn-space">
-                    <span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> &nbsp; Edit</span>
-                </a>
-            </div>
+         <div class="section-next-emp visible-xs container">
+             <span class="v-align"><strong>@emp.Employer</strong></span>
+             <a href="@Url.Action("DeleteEmployment", "Employment", new { id = @emp.Id })" class="btn btn-danger margin-right pull-right v-align">
+                 <span class="glyphicon glyphicon-remove"></span>
+             </a>
+             <a href="@Url.Action("EditEmployment", "Employment", new { id = @emp.Id })" class="btn btn-warning margin-right pull-right btn-space v-align">
+                 <span class="glyphicon glyphicon-edit"></span>
+             </a>
+        </div>
+        <div class="section-next-emp hidden-xs container">
+            <span class="v-align"><strong>@emp.Employer</strong></span>
+            <a href="@Url.Action("DeleteEmployment", "Employment", new { id = @emp.Id })" class="btn btn-danger margin-right pull-right v-align">
+                <span class="glyphicon glyphicon-remove"></span><span> &nbsp; Delete</span>
+            </a>
+            <a href="@Url.Action("EditEmployment", "Employment", new { id = @emp.Id })" class="btn btn-warning margin-right pull-right btn-space v-align">
+                <span class="glyphicon glyphicon-edit"></span><span> &nbsp; Edit</span>
+            </a>
+        </div>
 
+        <div class="section-next container">
             <div>@emp.Address</div>
-            <div>@emp.City, @emp.State  @emp.Zip</div>
+            <div>@emp.City,&nbsp;@emp.State&nbsp;@emp.Zip</div>
             <div>Website: @emp.Website</div>
+            <br>
             <div class="field-description"><em>@emp.Description</em></div>
-            <div>Start Date: @emp.StartDate.ToShortDateString() End Date: @emp.EndDate</div>
+            <br>
+            <div class="row">
+                <div class="col-sm-4">Start Date: @emp.StartDate.ToShortDateString()</div>
+
+                @if (emp.EndDate.HasValue) {
+                    <div class="col-sm-4">End Date: @emp.EndDate.Value.ToShortDateString()</div>
+                } else {
+                    <div class="col-sm-4">End Date: </div>}
+           </div>
+        </div>
 
             <div>
                 <span>Positions</span>
