@@ -6,28 +6,30 @@
 
             <h1 class="section-top visible-xs container">
                 <span class="v-align"><strong>Employment</strong></span>
-                <a href="@Url.Action("AddEmployment","Employment")" class="btn btn-success btn-lg margin-right pull-right v-align">
+                <a href="@Url.Action("AddEmployment", "Employment")" class="btn btn-success btn-lg margin-right pull-right v-align">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </h1>
 
             <h1 class="section-top hidden-xs container">
                 <span class="v-align"><strong>Employment</strong></span>
-                <a href="@Url.Action("AddEmployment","Employment")" class="btn btn-success btn-lg margin-right pull-right v-align">
+                <a href="@Url.Action("AddEmployment", "Employment")" class="btn btn-success btn-lg margin-right pull-right v-align">
                     <span class="glyphicon glyphicon-plus"></span><span>&nbsp; Add Employment</span>
                 </a>
             </h1>
     
-    @foreach (var emp in Model.EmploymentHistory)
+   @{var query1 = Model.EmploymentHistory.OrderByDescending(m => m.EndDate ?? DateTime.MaxValue).ThenByDescending(m => m.StartDate);}
+
+    @foreach (var emp in query1)
     {
-         <div class="section-next-emp visible-xs container">
-             <span class="v-align"><strong>@emp.Employer</strong></span>
-             <a href="@Url.Action("DeleteEmployment", "Employment", new { id = @emp.Id })" class="btn btn-danger margin-right pull-right v-align">
-                 <span class="glyphicon glyphicon-remove"></span>
-             </a>
-             <a href="@Url.Action("EditEmployment", "Employment", new { id = @emp.Id })" class="btn btn-warning margin-right pull-right btn-space v-align">
-                 <span class="glyphicon glyphicon-edit"></span>
-             </a>
+        <div class="section-next-emp visible-xs container">
+            <span class="v-align"><strong>@emp.Employer</strong></span>
+            <a href="@Url.Action("DeleteEmployment", "Employment", new { id = @emp.Id })" class="btn btn-danger margin-right pull-right v-align">
+                <span class="glyphicon glyphicon-remove"></span>
+            </a>
+            <a href="@Url.Action("EditEmployment", "Employment", new { id = @emp.Id })" class="btn btn-warning margin-right pull-right btn-space v-align">
+                <span class="glyphicon glyphicon-edit"></span>
+            </a>
         </div>
         <div class="section-next-emp hidden-xs container">
             <span class="v-align"><strong>@emp.Employer</strong></span>
@@ -44,7 +46,7 @@
             <div>@emp.City,&nbsp;@emp.State&nbsp;@emp.Zip</div>
             <div>Website: @emp.Website</div>
             <br>
-            <div class="field-description"><em>@emp.Description</em></div>
+            <div><em>@emp.Description</em></div>
             <br>
             <div class="row">
                 <div class="col-sm-4">Start Date: @emp.StartDate.ToShortDateString()</div>
@@ -56,15 +58,15 @@
                 else
                 {
                     <div class="col-sm-4">End Date: </div>}
-           </div>
+            </div>
         </div>
 
-            <div class="section-next-position visible-xs container">
-                <span class="v-align"><strong><u>Positions</u></strong></span>
-                <a href="@Url.Action("AddPosition", "Employment", new { id = @emp.Id })" class="btn btn-success margin-right pull-right v-align">
-                    <span class="glyphicon glyphicon-plus"></span>
-                </a>
-            </div>
+        <div class="section-next-position visible-xs container">
+            <span class="v-align"><strong><u>Positions</u></strong></span>
+            <a href="@Url.Action("AddPosition", "Employment", new { id = @emp.Id })" class="btn btn-success margin-right pull-right v-align">
+                <span class="glyphicon glyphicon-plus"></span>
+            </a>
+        </div>
 
             <div class="section-next-position hidden-xs container">
                 <span class="v-align"><strong><u>Positions</u></strong></span>
@@ -73,12 +75,14 @@
                 </a>
             </div>
 
-        foreach (var pos in emp.Positions)
-        {
+            var query2 = emp.Positions.OrderByDescending(m => m.EndDate ?? DateTime.MaxValue).ThenByDescending(m => m.StartDate);
+
+            foreach (var pos in query2)
+            {
             <div class="position-indent">
                 <div class="border-group">
                     <div class="section-next-position visible-xs container">
-                        <span class="v-align"><strong>@pos.Title</strong ></span>
+                        <span class="v-align"><strong>@pos.Title</strong></span>
                         <a href="@Url.Action("DeletePosition", "Position", new { id = @pos.Id })" class="btn btn-danger margin-right pull-right v-align">
                             <span class="glyphicon glyphicon-remove"></span>
                         </a>
@@ -111,37 +115,37 @@
 
                         @if (pos.Accomplishments.Count() > 0)
                         {
-                        <div class="section-next-accomplishments">
-                            <span class="clearfix"><strong>Accomplishments</strong></span>
-                            <ul>
-                            @foreach (var acc in pos.Accomplishments)
-                            {
-                                <li class="acc">@acc.Description</li>
-                            }
-                            </ul>
-                        </div>
+                            <div class="section-next-accomplishments">
+                                <span class="clearfix"><strong>Accomplishments</strong></span>
+                                <ul>
+                                    @foreach (var acc in pos.Accomplishments)
+                                    {
+                                        <li class="acc">@acc.Description</li>
+                                    }
+                                </ul>
+                            </div>
                         }
 
                         @if (pos.Contacts.Count() > 0)
                         {
-                        <div class="section-next-contacts">
-                            <span class="clearfix"><strong>Contacts</strong></span>
+                            <div class="section-next-contacts">
+                                <span class="clearfix"><strong>Contacts</strong></span>
                                 <div class="hidden-sm hidden-xs row con">
                                     <div class="col-md-3"><u>Name</u></div>
                                     <div class="col-md-3"><u>Title</u></div>
                                     <div class="col-md-3"><u>Email</u></div>
                                     <div class="col-md-3"><u>Phone</u></div>
                                 </div>
-                            @foreach (var con in pos.Contacts)
-                            {
-                                <div class="row con">
-                                    <div class="col-md-3">@con.Name</div>
-                                    <div class="col-md-3">@con.Title</div>
-                                    <div class="col-md-3">@con.Email</div>
-                                    <div class="col-md-3">@con.Phone</div>
-                                </div>
-                            }
-                        </div>
+                                @foreach (var con in pos.Contacts)
+                                {
+                                    <div class="row con">
+                                        <div class="col-md-3">@con.Name</div>
+                                        <div class="col-md-3">@con.Title</div>
+                                        <div class="col-md-3">@con.Email</div>
+                                        <div class="col-md-3">@con.Phone</div>
+                                    </div>
+                                }
+                            </div>
                         }
 
                     </div>
@@ -151,146 +155,205 @@
 
     }
 
-            <h1 class="section-top visible-xs container">
-                <span class="v-align"><strong>Education</strong></span>
-                <a href="@Url.Action("AddEducation","Education")" class="btn btn-success btn-lg margin-right pull-right v-align">
-                    <span class="glyphicon glyphicon-plus"></span>
-                </a>
-            </h1>
+    <h1 class="section-top visible-xs container">
+        <span class="v-align"><strong>Education</strong></span>
+        <a href="@Url.Action("AddEducation","Education")" class="btn btn-success btn-lg margin-right pull-right v-align">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+    </h1>
 
-            <h1 class="section-top hidden-xs container">
-                <span class="v-align"><strong>Education</strong></span>
-                <a hhref="@Url.Action("AddEducation","Education")" class="btn btn-success btn-lg margin-right pull-right v-align">
-                    <span class="glyphicon glyphicon-plus"></span><span>&nbsp; Add Education</span>
-                </a>
-            </h1>
+    <h1 class="section-top hidden-xs container">
+        <span class="v-align"><strong>Education</strong></span>
+        <a hhref="@Url.Action("AddEducation","Education")" class="btn btn-success btn-lg margin-right pull-right v-align">
+            <span class="glyphicon glyphicon-plus"></span><span>&nbsp; Add Education</span>
+        </a>
+    </h1>
 
-                @foreach (var edu in Model.EducationHistory)
-                {
-                    <div class="section-next-edu visible-xs container">
-                        <span class="v-align">@edu.Institution - @edu.Degree</span>
-                        <a href="@Url.Action("DeleteEducation","Education", new { id = @edu.Id })" class="btn btn-danger margin-right pull-right v-align">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </a>
-                        <a href="@Url.Action("EditEducation","Education", new { id = @edu.Id })" class="btn btn-warning margin-right pull-right btn-space v-align">
-                            <span class="glyphicon glyphicon-edit"></span>
-                        </a>
-                    </div>
+    @{var query3 = Model.EducationHistory.OrderByDescending(m => m.EndDate ?? DateTime.MaxValue).ThenByDescending(m => m.StartDate);}
+
+    @foreach (var edu in query3)
+    {
+        <div class="section-next-edu visible-xs container">
+            <span class="v-align"><strong>@edu.Degree</strong></span>
+            <a href="@Url.Action("DeleteEducation", "Education", new { id = @edu.Id })" class="btn btn-danger margin-right pull-right v-align">
+                <span class="glyphicon glyphicon-remove"></span>
+            </a>
+            <a href="@Url.Action("EditEducation", "Education", new { id = @edu.Id })" class="btn btn-warning margin-right pull-right btn-space v-align">
+                <span class="glyphicon glyphicon-edit"></span>
+            </a>
+        </div>
                     <div class="section-next-edu hidden-xs container">
-                        <span class="v-align">@edu.Institution - @edu.Degree</span>
-                        <a href="@Url.Action("DeleteEducation","Education", new { id = @edu.Id })" class="btn btn-danger margin-right pull-right v-align">
+                        <span class="v-align"><strong>@edu.Degree</strong></span>
+                        <a href="@Url.Action("DeleteEducation", "Education", new { id = @edu.Id })" class="btn btn-danger margin-right pull-right v-align">
                             <span class="glyphicon glyphicon-remove"></span><span> &nbsp; Delete</span>
                         </a>
-                        <a href="@Url.Action("EditEducation","Education", new { id = @edu.Id })" class="btn btn-warning margin-right pull-right btn-space v-align">
+                        <a href="@Url.Action("EditEducation", "Education", new { id = @edu.Id })" class="btn btn-warning margin-right pull-right btn-space v-align">
                             <span class="glyphicon glyphicon-edit"></span><span> &nbsp; Edit</span>
                         </a>
                     </div>
-                }
 
-                <h1 class="section-top visible-xs container">
-                    <span class="v-align"><strong>Certifications</strong></span>
-                    <a href="@Url.Action("AddCertification","Certification")" class="btn btn-success btn-lg margin-right pull-right v-align">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </a>
-                </h1>
-
-                <h1 class="section-top hidden-xs container">
-                    <span class="v-align"><strong>Certifications</strong></span>
-                    <a href="@Url.Action("AddCertification","Certification")" class="btn btn-success btn-lg margin-right pull-right v-align">
-                        <span class="glyphicon glyphicon-plus"></span><span>&nbsp; Add Certification</span>
-                    </a>
-                </h1>
-
-                @foreach (var cer in Model.CertificationHistory)
-                {
-                    <div class="section-next-edu visible-xs container">
-                        <span class="v-align">@cer.Organization - @cer.Type</span>
-                        <a href="@Url.Action("DeleteCertification","Certification", new { id = @cer.Id })" class="btn btn-danger margin-right pull-right v-align">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </a>
-                        <a href="@Url.Action("EditCertification","Certification", new { id = @cer.Id })" class="btn btn-warning margin-right pull-right btn-space v-align">
-                            <span class="glyphicon glyphicon-edit"></span>
-                        </a>
+                    <div class="section-details container">
+                        <div class="row">
+                            <div class="col-sm-4">@edu.Institution</div>
+                            <div class="col-sm-4">GPA: @edu.GPA.ToString("#.##")</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">Start Date: @edu.StartDate.ToShortDateString()</div>
+                            @if (edu.EndDate.HasValue)
+                            {
+                                <div class="col-sm-4">End Date: @edu.EndDate.Value.ToShortDateString()</div>
+                            }
+                            else
+                            {
+                                <div class="col-sm-4">End Date: </div>
+                            }
+                        </div>
+                        <div class="section-details-edu">@edu.Accomplishments</div>
                     </div>
-                    <div class="section-next-edu hidden-xs container">
-                        <span class="v-align">@cer.Organization - @cer.Type</span>
-                        <a href="@Url.Action("DeleteCertification","Certification", new { id = @cer.Id })" class="btn btn-danger margin-right pull-right v-align">
-                            <span class="glyphicon glyphicon-remove"></span><span> &nbsp; Delete</span>
-                        </a>
-                        <a href="@Url.Action("EditCertification","Certification", new { id = @cer.Id })" class="btn btn-warning margin-right pull-right btn-space v-align">
-                            <span class="glyphicon glyphicon-edit"></span><span> &nbsp; Edit</span>
-                        </a>
-                    </div>
-                }
+    }
 
-                <h1 class="section-top visible-xs container">
-                    <span class="v-align"><strong>Skills</strong></span>
-                    <a href="@Url.Action("AddSkill","Skill")" class="btn btn-success btn-lg margin-right pull-right v-align">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </a>
-                </h1>
 
-                <h1 class="section-top hidden-xs container">
-                    <span class="v-align"><strong>Skills</strong></span>
-                    <a href="@Url.Action("AddSkill","Skill")" class="btn btn-success btn-lg margin-right pull-right v-align">
-                        <span class="glyphicon glyphicon-plus"></span><span>&nbsp; Add Skill</span>
-                    </a>
-                </h1>
+    <h1 class="section-top visible-xs container">
+        <span class="v-align"><strong>Certifications</strong></span>
+        <a href="@Url.Action("AddCertification","Certification")" class="btn btn-success btn-lg margin-right pull-right v-align">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+    </h1>
 
-                @foreach (var skl in Model.SkillHistory)
-                {
-                    <div class="section-next-edu visible-xs container">
-                        <span class="v-align">@skl.Type</span>
-                        <a href="@Url.Action("DeleteSkill","Skill", new { id = @skl.Id })" class="btn btn-danger margin-right pull-right v-align">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </a>
-                        <a href="@Url.Action("EditSkill","Skill", new { id = @skl.Id })" class="btn btn-warning margin-right pull-right btn-space v-align">
-                            <span class="glyphicon glyphicon-edit"></span>
-                        </a>
-                    </div>
-                    <div class="section-next-edu hidden-xs container">
-                        <span class="v-align">@skl.Type</span>
-                        <a href="@Url.Action("DeleteSkill","Skill", new { id = @skl.Id })" class="btn btn-danger margin-right pull-right v-align">
-                            <span class="glyphicon glyphicon-remove"></span><span> &nbsp; Delete</span>
-                        </a>
-                        <a href="@Url.Action("EditSkill","Skill", new { id = @skl.Id })" class="btn btn-warning margin-right pull-right btn-space v-align">
-                            <span class="glyphicon glyphicon-edit"></span><span> &nbsp; Edit</span>
-                        </a>
-                    </div>
-                }
+    <h1 class="section-top hidden-xs container">
+        <span class="v-align"><strong>Certifications</strong></span>
+        <a href="@Url.Action("AddCertification","Certification")" class="btn btn-success btn-lg margin-right pull-right v-align">
+            <span class="glyphicon glyphicon-plus"></span><span>&nbsp; Add Certification</span>
+        </a>
+    </h1>
 
-                <h1 class="section-top visible-xs container">
-                    <span class="v-align"><strong>Affiliations</strong></span>
-                    <a href="@Url.Action("AddAffiliation","Affiliation")" class="btn btn-success btn-lg margin-right pull-right v-align">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </a>
-                </h1>
+    @{var query4 = Model.CertificationHistory.OrderByDescending(m => m.CompletionDate ?? DateTime.MaxValue).ThenBy(m => m.Type);}
 
-                <h1 class="section-top hidden-xs container">
-                    <span class="v-align"><strong>Affiliations</strong></span>
-                    <a href="@Url.Action("AddAffiliation","Affiliation")" class="btn btn-success btn-lg margin-right pull-right v-align">
-                        <span class="glyphicon glyphicon-plus"></span><span>&nbsp; Add Affiliation</span>
-                    </a>
-                </h1>
+    @foreach (var cer in query4)
+    {
+        <div class="section-next-edu visible-xs container">
+            <span class="v-align"><strong>@cer.Type</strong></span>
+            <a href="@Url.Action("DeleteCertification","Certification", new { id = @cer.Id })" class="btn btn-danger margin-right pull-right v-align">
+                <span class="glyphicon glyphicon-remove"></span>
+            </a>
+            <a href="@Url.Action("EditCertification","Certification", new { id = @cer.Id })" class="btn btn-warning margin-right pull-right btn-space v-align">
+                <span class="glyphicon glyphicon-edit"></span>
+            </a>
+        </div>
+                            <div class="section-next-edu hidden-xs container">
+                                <span class="v-align"><strong>@cer.Type</strong></span>
+                                <a href="@Url.Action("DeleteCertification","Certification", new { id = @cer.Id })" class="btn btn-danger margin-right pull-right v-align">
+                                    <span class="glyphicon glyphicon-remove"></span><span> &nbsp; Delete</span>
+                                </a>
+                                <a href="@Url.Action("EditCertification","Certification", new { id = @cer.Id })" class="btn btn-warning margin-right pull-right btn-space v-align">
+                                    <span class="glyphicon glyphicon-edit"></span><span> &nbsp; Edit</span>
+                                </a>
+                            </div>
 
-                @foreach (var afl in Model.AffiliationHistory)
-                {
-                    <div class="section-next-edu visible-xs container">
-                        <span class="v-align">@afl.Organization - @afl.Type</span>
-                        <a href="@Url.Action("DeleteAffiliation","Affiliation", new { id = @afl.Id })" class="btn btn-danger margin-right pull-right v-align">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </a>
-                        <a href="@Url.Action("EditAffiliation","Affiliation", new { id = @afl.Id })" class="btn btn-warning margin-right pull-right btn-space v-align">
-                            <span class="glyphicon glyphicon-edit"></span>
-                        </a>
-                    </div>
-                    <div class="section-next-edu hidden-xs container">
-                        <span class="v-align">@afl.Organization - @afl.Type</span>
-                        <a href="@Url.Action("DeleteAffiliation","Affiliation", new { id = @afl.Id })" class="btn btn-danger margin-right pull-right v-align">
-                            <span class="glyphicon glyphicon-remove"></span><span> &nbsp; Delete</span>
-                        </a>
-                        <a href="@Url.Action("EditAffiliation","Affiliation", new { id = @afl.Id })" class="btn btn-warning margin-right pull-right btn-space v-align">
-                            <span class="glyphicon glyphicon-edit"></span><span> &nbsp; Edit</span>
-                        </a>
-                    </div>
-                }
+                            <div class="section-details container">
+                                <div>@cer.Organization</div>
+                                @if (cer.CompletionDate.HasValue)
+                                {
+                                    <div>Completion Date: @cer.CompletionDate.Value.ToShortDateString()</div>
+                                }
+                                else
+                                {
+                                    <div>Completion Date: </div>
+                                }
+                                <div class="section-details-edu">@cer.Description</div>
+                            </div>
+    }
+
+    <h1 class="section-top visible-xs container">
+        <span class="v-align"><strong>Skills</strong></span>
+        <a href="@Url.Action("AddSkill","Skill")" class="btn btn-success btn-lg margin-right pull-right v-align">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+    </h1>
+
+    <h1 class="section-top hidden-xs container">
+        <span class="v-align"><strong>Skills</strong></span>
+        <a href="@Url.Action("AddSkill","Skill")" class="btn btn-success btn-lg margin-right pull-right v-align">
+            <span class="glyphicon glyphicon-plus"></span><span>&nbsp; Add Skill</span>
+        </a>
+    </h1>
+
+    @foreach (var skl in Model.SkillHistory)
+    {
+        <div class="section-next-edu visible-xs container">
+            <span class="v-align"><strong>@skl.Type</strong></span>
+            <a href="@Url.Action("DeleteSkill","Skill", new { id = @skl.Id })" class="btn btn-danger margin-right pull-right v-align">
+                <span class="glyphicon glyphicon-remove"></span>
+            </a>
+            <a href="@Url.Action("EditSkill","Skill", new { id = @skl.Id })" class="btn btn-warning margin-right pull-right btn-space v-align">
+                <span class="glyphicon glyphicon-edit"></span>
+            </a>
+        </div>
+                            <div class="section-next-edu hidden-xs container">
+                                <span class="v-align"><strong>@skl.Type</strong></span>
+                                <a href="@Url.Action("DeleteSkill","Skill", new { id = @skl.Id })" class="btn btn-danger margin-right pull-right v-align">
+                                    <span class="glyphicon glyphicon-remove"></span><span> &nbsp; Delete</span>
+                                </a>
+                                <a href="@Url.Action("EditSkill","Skill", new { id = @skl.Id })" class="btn btn-warning margin-right pull-right btn-space v-align">
+                                    <span class="glyphicon glyphicon-edit"></span><span> &nbsp; Edit</span>
+                                </a>
+                            </div>
+
+                            <div class="section-details container">
+                                <div class="section-details-edu">@skl.Description</div>
+                            </div>
+    }
+
+    <h1 class="section-top visible-xs container">
+        <span class="v-align"><strong>Affiliations</strong></span>
+        <a href="@Url.Action("AddAffiliation","Affiliation")" class="btn btn-success btn-lg margin-right pull-right v-align">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+    </h1>
+
+    <h1 class="section-top hidden-xs container">
+        <span class="v-align"><strong>Affiliations</strong></span>
+        <a href="@Url.Action("AddAffiliation","Affiliation")" class="btn btn-success btn-lg margin-right pull-right v-align">
+            <span class="glyphicon glyphicon-plus"></span><span>&nbsp; Add Affiliation</span>
+        </a>
+    </h1>
+
+    @{var query5 = Model.AffiliationHistory.OrderByDescending(m => m.EndDate ?? DateTime.MaxValue).ThenByDescending(m => m.StartDate);}
+
+    @foreach (var afl in query5)
+    {
+        <div class="section-next-edu visible-xs container">
+            <span class="v-align"><strong>@afl.Type</strong></span>
+            <a href="@Url.Action("DeleteAffiliation","Affiliation", new { id = @afl.Id })" class="btn btn-danger margin-right pull-right v-align">
+                <span class="glyphicon glyphicon-remove"></span>
+            </a>
+            <a href="@Url.Action("EditAffiliation","Affiliation", new { id = @afl.Id })" class="btn btn-warning margin-right pull-right btn-space v-align">
+                <span class="glyphicon glyphicon-edit"></span>
+            </a>
+        </div>
+                            <div class="section-next-edu hidden-xs container">
+                                <span class="v-align"><strong>@afl.Type</strong></span>
+                                <a href="@Url.Action("DeleteAffiliation","Affiliation", new { id = @afl.Id })" class="btn btn-danger margin-right pull-right v-align">
+                                    <span class="glyphicon glyphicon-remove"></span><span> &nbsp; Delete</span>
+                                </a>
+                                <a href="@Url.Action("EditAffiliation","Affiliation", new { id = @afl.Id })" class="btn btn-warning margin-right pull-right btn-space v-align">
+                                    <span class="glyphicon glyphicon-edit"></span><span> &nbsp; Edit</span>
+                                </a>
+                            </div>
+
+                            <div class="section-details container">
+                                <div>@afl.Organization</div>
+                                <div class="row">
+                                    <div class="col-sm-4">Start Date: @afl.StartDate.ToShortDateString()</div>
+                                    @if (afl.EndDate.HasValue)
+                                    {
+                                        <div class="col-sm-4">End Date: @afl.EndDate.Value.ToShortDateString()</div>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-sm-4">End Date: </div>
+                                    }
+                                </div>
+                                <div class="section-details-edu">@afl.Description</div>
+                            </div>
+    }
