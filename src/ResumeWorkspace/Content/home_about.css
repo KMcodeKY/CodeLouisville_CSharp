@@ -2,10 +2,14 @@
     color: red;
 }
 
-.btn-space {
-    margin-right: 10px;
+.section-top {
+    font-size: 2.25em;
+    border-style: solid;
+    border-color: lightgray;
+    border-width: 1px;
+    padding: 10px;
 }
 
-.hidden-xs {
-    display: inline-block !important;
+.btn-space {
+    margin-right: 10px;
 }

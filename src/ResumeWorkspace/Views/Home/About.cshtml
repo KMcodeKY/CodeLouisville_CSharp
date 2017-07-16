@@ -4,42 +4,49 @@
     <link href="@Url.Content("~/Content/home_about.css")" rel="stylesheet" type="text/css" />
 }
 
-    <h1>
-        <span>Employment</span>
-        <a href="@Url.Action("AddEmployment","Employment")" class="btn btn-success btn-sm margin-right pull-right">
-            <span class="glyphicon glyphicon-plus"></span><span class="hidden-xs"> Add Employment</span>
+    <h1 class="section-top visible-xs container">
+        <span class="v-algin"><strong>Employment</strong></span>
+        <a href="@Url.Action("AddEmployment","Employment")" class="btn btn-success btn-lg margin-right pull-right v-algin">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+    </h1>
+
+    <h1 class="section-top hidden-xs container">
+        <span class="v-align"><strong>Employment</strong></span>
+        <a href="@Url.Action("AddEmployment","Employment")" class="btn btn-success btn-lg margin-right pull-right v-align">
+            <span class="glyphicon glyphicon-plus"></span><span>&nbsp; Add Employment</span>
         </a>
     </h1>
     
     @foreach (var emp in Model.EmploymentHistory)
     {
-            <h2>
+            <div class="form-group">
                 <span>@emp.Employer</span>
                 <a href="@Url.Action("DeleteEmployment","Employment", new { id = @emp.Id })" class="btn btn-danger btn-sm margin-right pull-right">
-                    <span class="glyphicon glyphicon-remove"></span><span class="hidden-xs"> Delete</span>
+                    <span class="glyphicon glyphicon-remove"></span><span class="hidden-xs">&nbsp; Delete</span>
                 </a>
                 <a href="@Url.Action("EditEmployment","Employment", new { id = @emp.Id })" class="btn btn-warning btn-sm margin-right pull-right btn-space">
-                    <span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> Edit</span>
+                    <span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> &nbsp; Edit</span>
                 </a>
-            </h2>
+            </div>
 
-            <h2>@emp.Address</h2>
-            <h2>@emp.City, @emp.State  @emp.Zip</h2>
-            <h2>Website: @emp.Website</h2>
-            <h3 class="field-description">@emp.Description</h3>
-            <h3>Start Date: @emp.StartDate.ToShortDateString() End Date: @emp.EndDate</h3>
+            <div>@emp.Address</div>
+            <div>@emp.City, @emp.State  @emp.Zip</div>
+            <div>Website: @emp.Website</div>
+            <div class="field-description"><em>@emp.Description</em></div>
+            <div>Start Date: @emp.StartDate.ToShortDateString() End Date: @emp.EndDate</div>
 
-            <h1>
+            <div>
                 <span>Positions</span>
                 <a href="@Url.Action("AddPosition","Employment", new { id = @emp.Id })" class="btn btn-success btn-sm margin-right pull-right">
                     <span class="glyphicon glyphicon-plus"></span><span class="hidden-xs"> Add Position</span>
                 </a>
-            </h1>
+            </div>
 
             foreach (var pos in emp.Positions)
             {
 
-            <h2>
+            <div>
                 <span>@pos.Title</span>
                 <a href="@Url.Action("DeletePosition","Position", new { id = @pos.Id })" class="btn btn-danger btn-sm margin-right pull-right">
                     <span class="glyphicon glyphicon-remove"></span><span class="hidden-xs"> Delete</span>
@@ -47,27 +54,27 @@
                 <a href="@Url.Action("EditPosition","Position", new { id = @pos.Id })" class="btn btn-warning btn-sm margin-right pull-right btn-space">
                     <span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> Edit</span>
                 </a>
-            </h2>
+            </div>
 
-            <h3>Start Date: @emp.StartDate End Date: @emp.EndDate</h3>
+            <div>Start Date: @emp.StartDate End Date: @emp.EndDate</div>
             foreach (var acc in pos.Accomplishments)
             {
-            <h3>@acc.Description</h3>
+            <div>@acc.Description</div>
             }
             foreach (var con in pos.Contacts)
             {
-            <h3>@con.Name</h3>
-            <h3>@con.Title</h3>
-            <h3>@con.Email</h3>
-            <h3>@con.Phone</h3>
+            <div>@con.Name</div>
+            <div>@con.Title</div>
+            <div>@con.Email</div>
+            <div>@con.Phone</div>
             }
 
             }
 
             }
 
-            <h1>
-                <span>Education</span>
+            <h1 class="section-top" style="display: inline !important;">
+                <span class="section-title"><strong>Education</strong></span>
                 <a href="@Url.Action("AddEducation","Education")" class="btn btn-success btn-sm margin-right pull-right">
                 <span class="glyphicon glyphicon-plus"></span><span class="hidden-xs"> Add Education</span>
                 </a>
@@ -76,7 +83,7 @@
 
             @foreach (var edu in Model.EducationHistory)
             {
-                <h2>
+                <div>
                     <span>@edu.Institution - @edu.Degree</span>
                     <a href="@Url.Action("DeleteEducation","Education", new { id = @edu.Id })" class="btn btn-danger btn-sm margin-right pull-right">
                         <span class="glyphicon glyphicon-remove"></span><span class="hidden-xs"> Delete</span>
@@ -84,11 +91,11 @@
                     <a href="@Url.Action("EditEducation","Education", new { id = @edu.Id })" class="btn btn-warning btn-sm margin-right pull-right btn-space">
                         <span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> Edit</span>
                     </a>
-                </h2>
+                </div>
             }
 
-            <h1>
-                <span>Certifications</span>
+            <h1 class="section-top">
+                <span class="section-title"><strong>Certifications</strong></span>
                 <a href="@Url.Action("AddCertification","Certification")" class="btn btn-success btn-sm margin-right pull-right">
                     <span class="glyphicon glyphicon-plus"></span><span class="hidden-xs"> Add Certification</span>
                 </a>
@@ -97,7 +104,7 @@
 
             @foreach (var cer in Model.CertificationHistory)
             {
-                <h2>
+                <div>
                     <span>@cer.Organization - @cer.Type</span>
                     <a href="@Url.Action("DeleteCertification","Certification", new { id = @cer.Id })" class="btn btn-danger btn-sm margin-right pull-right">
                         <span class="glyphicon glyphicon-remove"></span><span class="hidden-xs"> Delete</span>
@@ -105,11 +112,11 @@
                     <a href="@Url.Action("EditCertification","Certification", new { id = @cer.Id })" class="btn btn-warning btn-sm margin-right pull-right btn-space">
                         <span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> Edit</span>
                     </a>
-                </h2>
+                </div>
             }
 
-            <h1>
-                <span>Skills</span>
+            <h1 class="section-top">
+                <span class="section-title"><strong>Skills</strong></span>
                 <a href="@Url.Action("AddSkill","Skill")" class="btn btn-success btn-sm margin-right pull-right">
                     <span class="glyphicon glyphicon-plus"></span><span class="hidden-xs"> Add Skill</span>
                 </a>
@@ -118,7 +125,7 @@
 
             @foreach (var skl in Model.SkillHistory)
             {
-                <h2>
+                <div>
                     <span>@skl.Type</span>
                     <a href="@Url.Action("DeleteSkill","Skill", new { id = @skl.Id })" class="btn btn-danger btn-sm margin-right pull-right">
                         <span class="glyphicon glyphicon-remove"></span><span class="hidden-xs"> Delete</span>
@@ -126,11 +133,11 @@
                     <a href="@Url.Action("EditSkill","Skill", new { id = @skl.Id })"  class="btn btn-warning btn-sm margin-right pull-right btn-space">
                         <span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> Edit</span>
                     </a>
-                </h2>
+                </div>
             }
 
-                <h1>
-                    <span>Affiliations</span>
+                <h1 class="section-top">
+                    <span class="section-title"><strong>Affiliations</strong></span>
                     <a href="@Url.Action("AddAffiliation","Affiliation")" class="btn btn-success btn-sm margin-right pull-right">
                         <span class="glyphicon glyphicon-plus"></span><span class="hidden-xs"> Add Affiliation</span>
                     </a>
@@ -138,7 +145,7 @@
 
             @foreach (var afl in Model.AffiliationHistory)
             {
-                <h2>
+                <div>
                     <span>@afl.Organization - @afl.Type</span>
                     <a href="@Url.Action("DeleteAffiliation","Affiliation", new { id = @afl.Id })" class="btn btn-danger btn-sm margin-right pull-right">
                         <span class="glyphicon glyphicon-remove"></span><span class="hidden-xs"> Delete</span>
@@ -146,5 +153,5 @@
                     <a href="@Url.Action("EditAffiliation","Affiliation", new { id = @afl.Id })" class="btn btn-warning btn-sm margin-right pull-right btn-space">
                         <span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> Edit</span>
                     </a>
-                </h2>
+                </div>
             }
