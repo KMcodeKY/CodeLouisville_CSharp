@@ -125,8 +125,9 @@ namespace ResumeWorkspace.Controllers
 
         public ActionResult AddPosition(int? id)
         {
-            var temp = new Position() { };
+            var temp = new Position() {};
             temp.StartDate = DateTime.Now;
+            temp.Title = "Enter Title";
 
             //Includes EmploymentId for Position Addition
             Employment myEmployment = db.Employment.SingleOrDefault(user => user.Id == id);

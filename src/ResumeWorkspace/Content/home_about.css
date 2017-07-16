@@ -6,20 +6,57 @@
     font-size: 2.25em;
     border-style: solid;
     border-color: lightgray;
-    border-width: 1px;
+    border-width: 2px;
     padding: 10px;
 }
 
 .section-next-emp {
     font-size: 1.75em;
+    padding: 20px 10px 10px 10px;
+}
+
+.section-next-position {
+    font-size: 1.50em;
     padding: 10px;
 }
 
-.section-next {
+.section-next-edu {
+    font-size: 1.25em;
+    padding: 10px 10px 0px 10px;
+}
+
+.section-next-accomplishments,
+.section-next-contacts {
+    font-size: 1.25em;
+    padding-top: 15px;
+    padding-left: 10px;
+}
+
+.section-next-accomplishments .acc,
+.section-next-contacts .con{
+    font-size: 0.80em;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.border-group {
+    border-style: dotted;
+    border-color: lightgray;
+    border-width: 1px;
+    margin-top: 5px;
+}
+
+.section-details {
     font-size: 1em;
     padding: 10px;
 }
 
 .btn-space {
     margin-right: 10px;
+}
+
+@media screen and (min-width: 992px) {
+    .position-indent {
+        padding-left: 50px;
+    }
 }
