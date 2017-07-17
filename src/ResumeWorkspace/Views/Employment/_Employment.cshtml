@@ -2,6 +2,8 @@
 
 @using (Html.BeginForm())
 {
+    @Html.ValidationSummary("The following errors were found:", new { @class = "alert alert-danger" })
+
         @Html.HiddenFor(m => m.PersonId)
         @Html.HiddenFor(m => m.Id)
 
@@ -13,18 +15,20 @@
 
         <div class="col-sm-3 col-xs-6 form-group">
             @Html.LabelFor(m => m.StartDate, new { @class = "control-label" })
-            @Html.TextBoxFor(m => m.StartDate, "{0:d}", new { @class = "form-control datepicker" })
+            @Html.TextBoxFor(m => m.StartDate, "{0:d}", new { @class = "form-control datepicker sm-size" })
         </div>
 
         <div class="col-sm-3 col-xs-6 form-group">
             @Html.LabelFor(m => m.EndDate, new { @class = "control-label" })
-            @Html.TextBoxFor(m => m.EndDate, "{0:d}", new { @class = "form-control datepicker" })
+            @Html.TextBoxFor(m => m.EndDate, "{0:d}", new { @class = "form-control datepicker sm-size" })
         </div>
 
+        <span class="clearfix"></span>
             <div class="col-sm-12 col-xs-12 form-group">
                 @Html.LabelFor(m => m.Description, new { @class = "control-label" })
                 @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = "4", cols="12" })
             </div>
+        <span class="clearfix"></span>
 
             <div class="row col-sm-12">
                 <div class="col-sm-6 form-group">
@@ -42,30 +46,28 @@
 
             <div class="col-sm-4 form-group">
                 @Html.LabelFor(m => m.City, new { @class = "control-label" })
-                @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+                @Html.TextBoxFor(m => m.City, new { @class = "form-control md-size" })
             </div>
 
             <div class="col-sm-4 col-xs-6 form-group">
                 @Html.LabelFor(m => m.State, new { @class = "control-label" })
-                @Html.TextBoxFor(m => m.State, new { @class = "form-control small-size" })
+                @Html.TextBoxFor(m => m.State, new { @class = "form-control sm-size" })
             </div>
 
             <div class="col-sm-4 col-xs-6 form-group">
                 @Html.LabelFor(m => m.Zip, new { @class = "control-label" })
-                @Html.TextBoxFor(m => m.Zip, new { @class = "form-control small-size" })
+                @Html.TextBoxFor(m => m.Zip, new { @class = "form-control sm-size" })
             </div>
 
         </div>
 
-                <div class="col-md-12">
-                    <div class="pad-top">
-                        <button type="submit" class="btn btn-success btn-lg margin-right">
+                <div class="col-sm-12 col-xs-12 center form-btn">
+                        <button type="submit" class="btn btn-success btn-lg btn-space">
                             <span class="glyphicon glyphicon-save"></span> Save
                         </button>
                         <a href="@Url.Action("Index", "Home")" class="btn btn-warning btn-lg">
                             <span class="glyphicon glyphicon-remove"></span> Cancel
                         </a>
-                    </div>
                 </div>
 
 }

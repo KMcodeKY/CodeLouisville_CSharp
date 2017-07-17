@@ -60,10 +60,6 @@
     padding: 5px;
 }
 
-.btn-space {
-    margin-right: 10px;
-}
-
 @media screen and (min-width: 992px) {
     .position-indent {
         padding-left: 50px;

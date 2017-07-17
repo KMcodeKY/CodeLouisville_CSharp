@@ -5,14 +5,12 @@
 
 body {
     padding-top: 50px;
-    padding-bottom: 50px;
-    margin-bottom: 40px;
+    padding-bottom: 40px;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 10px 15px 50px 15px;
     margin-right: auto;
     margin-left: auto;
     max-width: 1000px;
@@ -41,6 +39,22 @@ body {
     vertical-align: middle;
 }
 
-.small-size{
+.sm-size{
     max-width: 200px;
+}
+
+.md-size {
+    max-width: 350px;
+}
+
+.center {
+    text-align: center;
+}
+
+.btn-space {
+    margin-right: 10px;
+}
+
+.validation-summary-valid {
+    display: none;
 }

@@ -26,10 +26,15 @@ namespace ResumeWorkspace.Controllers
         {
             //Includes PersonId for Employment Addition
             Person myPerson = db.Person.SingleOrDefault(user => user.Id == 1);
-            myPerson.AddEmployment(employment);
 
-            db.AddEmployment(employment);
-            return RedirectToAction("About", "Home");
+            if (ModelState.IsValid)
+            {
+                myPerson.AddEmployment(employment);
+                db.AddEmployment(employment);
+                return RedirectToAction("About", "Home");
+            } else {
+                return View("~/Views/Employment/AddEmployment.cshtml", employment);
+            }
         }
 
         public ActionResult EditEmployment(int? id)
