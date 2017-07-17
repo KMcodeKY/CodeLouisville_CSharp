@@ -39,28 +39,10 @@ body {
     vertical-align: middle;
 }
 
-.sm-size{
-    max-width: 200px;
-}
-
-.md-size {
-    max-width: 350px;
-}
-
 .center {
     text-align: center;
 }
 
 .btn-space {
     margin-right: 10px;
-}
-
-.validation-summary-valid {
-    display: none;
-}
-
-.datepicker{
-    z-index: 0;
-}
-
 }

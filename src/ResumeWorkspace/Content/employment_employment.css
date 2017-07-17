@@ -1,5 +1,5 @@
 ﻿body {
-    background-color: #e6e6e6;
+    background-color: #bfbfbf;
 }
 
 .body-content {
@@ -14,6 +14,16 @@
 
 .form-btn {
     padding-top: 30px;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.validation-summary-errors {
+    border-style: solid;
+    border-color: #b94a48;
+    border-width: 5px;
 }
 
 @media screen and (max-width: 768px) {

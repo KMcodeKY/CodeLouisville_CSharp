@@ -17,7 +17,7 @@ namespace ResumeWorkspace.Models
         public string Organization { get; set; }
         public string Website { get; set; }
         [Required]
-        [Display(Name = "Certification TYpe")]
+        [Display(Name = "Certification Type")]
         public string Type { get; set; }
         public string Description { get; set; }
 
