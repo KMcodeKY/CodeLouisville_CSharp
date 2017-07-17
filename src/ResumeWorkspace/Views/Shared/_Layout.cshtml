@@ -29,15 +29,15 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Resume Workspace</p>
-        </footer>
     </div>
+    <footer class="footer">
+        <p class="v-align">&copy; @DateTime.Now.Year - Resume Workspace</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("Home_About", false);
+    @RenderSection("Home_About", false)
+    @RenderSection("Employment_Employment", false)
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -61,15 +61,15 @@
             </div>
         </div>
 
-        <div class="section-next-position visible-xs container">
-            <span class="v-align"><strong><u>Positions</u></strong></span>
+        <div class="section-next-position section-next-position-header visible-xs container">
+            <span class="v-align"><strong>Positions</strong></span>
             <a href="@Url.Action("AddPosition", "Employment", new { id = @emp.Id })" class="btn btn-success margin-right pull-right v-align">
                 <span class="glyphicon glyphicon-plus"></span>
             </a>
         </div>
 
-            <div class="section-next-position hidden-xs container">
-                <span class="v-align"><strong><u>Positions</u></strong></span>
+            <div class="section-next-position section-next-position-header hidden-xs container">
+                <span class="v-align"><strong>@emp.Employer Positions</strong></span>
                 <a href="@Url.Action("AddPosition", "Employment", new { id = @emp.Id })" class="btn btn-success margin-right pull-right v-align">
                     <span class="glyphicon glyphicon-plus"></span><span>&nbsp; Add Position</span>
                 </a>

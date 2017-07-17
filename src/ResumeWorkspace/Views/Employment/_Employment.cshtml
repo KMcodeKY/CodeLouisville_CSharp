@@ -16,7 +16,7 @@
 
                 <div class="form-group">
                     @Html.LabelFor(m => m.Description, new { @class = "control-label" })
-                    @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+                    @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = "4" })
                 </div>
 
                 <div class="form-group">
@@ -36,22 +36,22 @@
 
                 <div class="form-group">
                     @Html.LabelFor(m => m.State, new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.State, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.State, new { @class = "form-control small-size" })
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(m => m.Zip, new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Zip, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.Zip, new { @class = "form-control small-size" })
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(m => m.StartDate, new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.StartDate, "{0:d}", new { @class = "form-control datepicker" })
+                    @Html.TextBoxFor(m => m.StartDate, "{0:d}", new { @class = "form-control datepicker small-size" })
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(m => m.EndDate, new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.EndDate, "{0:d}", new { @class = "form-control datepicker" })
+                    @Html.TextBoxFor(m => m.EndDate, "{0:d}", new { @class = "form-control small-size datepicker" })
                 </div>
 
             <div class="col-md-12">
