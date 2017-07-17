@@ -164,7 +164,7 @@
 
     <h1 class="section-top hidden-xs container">
         <span class="v-align"><strong>Education</strong></span>
-        <a hhref="@Url.Action("AddEducation","Education")" class="btn btn-success btn-lg margin-right pull-right v-align">
+        <a href="@Url.Action("AddEducation","Education")" class="btn btn-success btn-lg margin-right pull-right v-align">
             <span class="glyphicon glyphicon-plus"></span><span>&nbsp; Add Education</span>
         </a>
     </h1>
@@ -195,7 +195,10 @@
                     <div class="section-details container">
                         <div class="row">
                             <div class="col-sm-4">@edu.Institution</div>
-                            <div class="col-sm-4">GPA: @edu.GPA.ToString("#.##")</div>
+                            @if (@edu.GPA > 0)
+                            {
+                                <div class="col-sm-4">GPA: @edu.GPA.ToString("#.##")</div>
+                            }
                         </div>
                         <div class="row">
                             <div class="col-sm-4">Start Date: @edu.StartDate.ToShortDateString()</div>

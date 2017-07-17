@@ -4,8 +4,8 @@
 {
     @Html.ValidationSummary("The following errors were found:", new { @class = "alert alert-danger" })
 
-        @Html.HiddenFor(m => m.PersonId)
-        @Html.HiddenFor(m => m.Id)
+            @Html.HiddenFor(m => m.PersonId)
+            @Html.HiddenFor(m => m.Id)
 
     <div class="row">
         <div class="col-sm-6 col-xs-12 form-group">
@@ -15,12 +15,12 @@
 
         <div class="col-sm-3 col-xs-6 form-group">
             @Html.LabelFor(m => m.StartDate, new { @class = "control-label" })
-            @Html.TextBoxFor(m => m.StartDate, "{0:d}", new { @class = "form-control datepicker sm-size" })
+            @Html.TextBoxFor(m => m.StartDate, "{0:d}", new { @class = "form-control datepicker" })
         </div>
 
         <div class="col-sm-3 col-xs-6 form-group">
             @Html.LabelFor(m => m.EndDate, new { @class = "control-label" })
-            @Html.TextBoxFor(m => m.EndDate, "{0:d}", new { @class = "form-control datepicker sm-size" })
+            @Html.TextBoxFor(m => m.EndDate, "{0:d}", new { @class = "form-control datepicker" })
         </div>
 
         <span class="clearfix"></span>
@@ -30,33 +30,33 @@
             </div>
         <span class="clearfix"></span>
 
-            <div class="row col-sm-12">
-                <div class="col-sm-6 form-group">
-                    @Html.LabelFor(m => m.Website, new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Website, new { @class = "form-control" })
-                </div>
-            </div>
+        <span class="clearfix"></span>
+        <div class="col-sm-6 col-xs-12 form-group">
+            @Html.LabelFor(m => m.Website, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Website, new { @class = "form-control" })
+        </div>
+        <span class="clearfix"></span>
 
-            <div class="row col-sm-12">
-                <div class="col-sm-6 form-group">
-                    @Html.LabelFor(m => m.Address, new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
-                </div>
-            </div>
+        <span class="clearfix"></span>
+        <div class="col-sm-6 col-xs-12 form-group">
+            @Html.LabelFor(m => m.Address, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+        </div>
+        <span class="clearfix"></span>
 
-            <div class="col-sm-4 form-group">
+            <div class="col-sm-6 col-xs-12 form-group">
                 @Html.LabelFor(m => m.City, new { @class = "control-label" })
-                @Html.TextBoxFor(m => m.City, new { @class = "form-control md-size" })
+                @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
             </div>
 
-            <div class="col-sm-4 col-xs-6 form-group">
+            <div class="col-sm-3 col-xs-6 form-group">
                 @Html.LabelFor(m => m.State, new { @class = "control-label" })
-                @Html.TextBoxFor(m => m.State, new { @class = "form-control sm-size" })
+                @Html.TextBoxFor(m => m.State, new { @class = "form-control" })
             </div>
 
-            <div class="col-sm-4 col-xs-6 form-group">
+            <div class="col-sm-3 col-xs-6 form-group">
                 @Html.LabelFor(m => m.Zip, new { @class = "control-label" })
-                @Html.TextBoxFor(m => m.Zip, new { @class = "form-control sm-size" })
+                @Html.TextBoxFor(m => m.Zip, new { @class = "form-control" })
             </div>
 
         </div>

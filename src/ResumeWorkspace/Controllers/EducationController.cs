@@ -12,11 +12,13 @@ namespace ResumeWorkspace.Controllers
     {
         private Context db = new Context();
 
-        //Affiliation
+        //Education
 
         public ActionResult AddEducation()
         {
             var temp = new Education() { };
+            temp.StartDate = DateTime.Now;
+            temp.GPA = 0.00;
             return View("~/Views/Education/AddEducation.cshtml", temp);
         }
 
@@ -25,10 +27,15 @@ namespace ResumeWorkspace.Controllers
         {
             //Includes PersonId for Employment Addition
             Person myPerson = db.Person.SingleOrDefault(user => user.Id == 1);
-            myPerson.AddEducation(education);
 
-            db.AddEducation(education);
-            return RedirectToAction("About", "Home");
+            if (ModelState.IsValid)
+            {
+                myPerson.AddEducation(education);
+                db.AddEducation(education);
+                return RedirectToAction("About", "Home");
+            } else {
+                return View("~/Views/Education/AddEducation.cshtml", education);
+            }
         }
 
         public ActionResult EditEducation(int? id)

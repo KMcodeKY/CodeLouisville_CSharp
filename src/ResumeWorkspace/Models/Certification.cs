@@ -11,11 +11,13 @@ namespace ResumeWorkspace.Models
         public int Id { get; set; }
         public int PersonId { get; set; }
 
+        [Display(Name = "Completion Date")]
         public DateTime? CompletionDate { get; set; }
         [Required]
         public string Organization { get; set; }
         public string Website { get; set; }
         [Required]
+        [Display(Name = "Certification TYpe")]
         public string Type { get; set; }
         public string Description { get; set; }
 

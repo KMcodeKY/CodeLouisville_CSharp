@@ -12,7 +12,9 @@ namespace ResumeWorkspace.Models
         public int PersonId { get; set; }
 
         [Required]
+        [Display(Name = "Start Date")]
         public DateTime StartDate { get; set; }
+        [Display(Name = "End Date")]
         public DateTime? EndDate { get; set; }
         [Required]
         public string Institution { get; set; }
@@ -21,7 +23,9 @@ namespace ResumeWorkspace.Models
         public string City { get; set; }
         public string State { get; set; }
         public string Zip { get; set; }
+        [Required]
         public string Degree { get; set; }
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = true)]
         public double GPA { get; set; }
         public string Accomplishments { get; set; }
 

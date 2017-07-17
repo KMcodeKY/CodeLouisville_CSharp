@@ -58,3 +58,9 @@ body {
 .validation-summary-valid {
     display: none;
 }
+
+.datepicker{
+    z-index: 0;
+}
+
+}

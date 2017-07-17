@@ -12,12 +12,15 @@ namespace ResumeWorkspace.Models
         public int PersonId { get; set; }
 
         [Required]
+        [Display(Name = "Start Date")]
         public DateTime StartDate { get; set; }
+        [Display(Name = "End Date")]
         public DateTime? EndDate { get; set; }
         [Required]
         public string Organization { get; set; }
         public string Website { get; set; }
         [Required]
+        [Display(Name = "Affiliation Type")]
         public string Type { get; set; }
         public string Description { get; set; }
 

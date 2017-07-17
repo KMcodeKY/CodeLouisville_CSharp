@@ -12,6 +12,7 @@ namespace ResumeWorkspace.Models
         public int PersonId { get; set; }
 
         [Required]
+        [Display(Name = "Skill")]
         public string Type { get; set; }
         public string Description { get; set; }
 
