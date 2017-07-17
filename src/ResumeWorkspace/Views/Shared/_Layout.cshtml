@@ -36,8 +36,13 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("Home_About", false)
-    @RenderSection("Employment_Employment", false)
+    @RenderSection("home_about", false)
+    @RenderSection("employment_employment", false)
     @RenderSection("scripts", required: false)
+    <script>
+        $('input.datepicker').datepicker({
+            format: 'm/d/yyyy'
+        });
+    </script>
 </body>
 </html>

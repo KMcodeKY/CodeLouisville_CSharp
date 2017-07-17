@@ -2,70 +2,70 @@
 
 @using (Html.BeginForm())
 {
+        @Html.HiddenFor(m => m.PersonId)
+        @Html.HiddenFor(m => m.Id)
+
     <div class="row">
+        <div class="col-sm-6 col-xs-12 form-group">
+            @Html.LabelFor(m => m.Employer, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Employer, new { @class = "form-control" })
+        </div>
 
-        <div class="col-md-6">
+        <div class="col-sm-3 col-xs-6 form-group">
+            @Html.LabelFor(m => m.StartDate, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.StartDate, "{0:d}", new { @class = "form-control datepicker" })
+        </div>
 
-               @Html.HiddenFor(m => m.PersonId)
-               @Html.HiddenFor(m => m.Id)
+        <div class="col-sm-3 col-xs-6 form-group">
+            @Html.LabelFor(m => m.EndDate, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.EndDate, "{0:d}", new { @class = "form-control datepicker" })
+        </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Employer, new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Employer, new { @class = "form-control" })
-                </div>
+            <div class="col-sm-12 col-xs-12 form-group">
+                @Html.LabelFor(m => m.Description, new { @class = "control-label" })
+                @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = "4", cols="12" })
+            </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Description, new { @class = "control-label" })
-                    @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = "4" })
-                </div>
-
-                <div class="form-group">
+            <div class="row col-sm-12">
+                <div class="col-sm-6 form-group">
                     @Html.LabelFor(m => m.Website, new { @class = "control-label" })
                     @Html.TextBoxFor(m => m.Website, new { @class = "form-control" })
                 </div>
+            </div>
 
-                <div class="form-group">
+            <div class="row col-sm-12">
+                <div class="col-sm-6 form-group">
                     @Html.LabelFor(m => m.Address, new { @class = "control-label" })
                     @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
                 </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(m => m.City, new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(m => m.State, new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.State, new { @class = "form-control small-size" })
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Zip, new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Zip, new { @class = "form-control small-size" })
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(m => m.StartDate, new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.StartDate, "{0:d}", new { @class = "form-control datepicker small-size" })
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(m => m.EndDate, new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.EndDate, "{0:d}", new { @class = "form-control small-size datepicker" })
-                </div>
-
-            <div class="col-md-12">
-                <div class="pad-top">
-                    <button type="submit" class="btn btn-success btn-lg margin-right">
-                        <span class="glyphicon glyphicon-save"></span> Save
-                    </button>
-                    <a href="@Url.Action("Index", "Home")" class="btn btn-warning btn-lg">
-                        <span class="glyphicon glyphicon-remove"></span> Cancel
-                    </a>
-                </div>
             </div>
 
-      </div>
-</div>
+            <div class="col-sm-4 form-group">
+                @Html.LabelFor(m => m.City, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+            </div>
+
+            <div class="col-sm-4 col-xs-6 form-group">
+                @Html.LabelFor(m => m.State, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.State, new { @class = "form-control small-size" })
+            </div>
+
+            <div class="col-sm-4 col-xs-6 form-group">
+                @Html.LabelFor(m => m.Zip, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Zip, new { @class = "form-control small-size" })
+            </div>
+
+        </div>
+
+                <div class="col-md-12">
+                    <div class="pad-top">
+                        <button type="submit" class="btn btn-success btn-lg margin-right">
+                            <span class="glyphicon glyphicon-save"></span> Save
+                        </button>
+                        <a href="@Url.Action("Index", "Home")" class="btn btn-warning btn-lg">
+                            <span class="glyphicon glyphicon-remove"></span> Cancel
+                        </a>
+                    </div>
+                </div>
 
 }

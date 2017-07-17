@@ -17,6 +17,7 @@ namespace ResumeWorkspace.Controllers
         public ActionResult AddEmployment()
         {
             var temp = new Employment() { };
+            temp.StartDate = DateTime.Now;
             return View("~/Views/Employment/AddEmployment.cshtml", temp);
         }
 
