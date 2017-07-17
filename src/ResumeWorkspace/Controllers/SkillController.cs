@@ -12,7 +12,7 @@ namespace ResumeWorkspace.Controllers
     {
         private Context db = new Context();
 
-        //Affiliation
+        //Skill
 
         public ActionResult AddSkill()
         {
@@ -25,10 +25,15 @@ namespace ResumeWorkspace.Controllers
         {
             //Includes PersonId for Employment Addition
             Person myPerson = db.Person.SingleOrDefault(user => user.Id == 1);
-            myPerson.AddSkill(skill);
 
-            db.AddSkill(skill);
-            return RedirectToAction("About", "Home");
+            if (ModelState.IsValid)
+            {
+                myPerson.AddSkill(skill);
+                db.AddSkill(skill);
+                return RedirectToAction("About", "Home");
+            } else {
+                return View("~/Views/Skill/AddSkill.cshtml", skill);
+            }
         }
 
         public ActionResult EditSkill(int? id)
@@ -45,9 +50,15 @@ namespace ResumeWorkspace.Controllers
         [HttpPost]
         public ActionResult EditSkill(Skill skill)
         {
-            db.EditSkill(skill);
-            db.SaveChanges();
-            return RedirectToAction("Index", "Home");
+
+            if (ModelState.IsValid)
+            {
+                db.EditSkill(skill);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Home");
+            } else {
+                return View("~/Views/Skill/EditSkill.cshtml", skill);
+            }
         }
 
         public ActionResult DeleteSkill(int? id)

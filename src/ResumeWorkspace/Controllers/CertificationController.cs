@@ -12,7 +12,7 @@ namespace ResumeWorkspace.Controllers
     {
         private Context db = new Context();
 
-        //Affiliation
+        //Certification
 
         public ActionResult AddCertification()
         {
@@ -25,10 +25,15 @@ namespace ResumeWorkspace.Controllers
         {
             //Includes PersonId for Employment Addition
             Person myPerson = db.Person.SingleOrDefault(user => user.Id == 1);
-            myPerson.AddCertification(certification);
 
-            db.AddCertification(certification);
-            return RedirectToAction("About", "Home");
+            if (ModelState.IsValid)
+            {
+                myPerson.AddCertification(certification);
+                db.AddCertification(certification);
+                return RedirectToAction("About", "Home");
+            } else {
+                return View("~/Views/Certification/AddCertification.cshtml", certification);
+            }
         }
 
         public ActionResult EditCertification(int? id)
@@ -45,9 +50,14 @@ namespace ResumeWorkspace.Controllers
         [HttpPost]
         public ActionResult EditCertification(Certification certification)
         {
-            db.EditCertification(certification);
-            db.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            if (ModelState.IsValid)
+            {
+                db.EditCertification(certification);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Home");
+            } else {
+                return View("~/Views/Certification/EditCertification.cshtml", certification);
+            }
         }
 
         public ActionResult DeleteCertification(int? id)

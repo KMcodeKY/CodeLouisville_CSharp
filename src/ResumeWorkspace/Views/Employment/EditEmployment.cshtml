@@ -1,7 +1,9 @@
 ﻿@model ResumeWorkspace.Models.Employment
 
-@{
-    ViewBag.Title = "Edit Entry";
+@section Home_About {
+    <link href="@Url.Content("~/Content/employment_employment.css")" rel="stylesheet" type="text/css" />
 }
+
+<h2 class="form-title"><strong>Edit Employment</strong></h2>
 
 @Html.Partial("~/Views/Employment/_Employment.cshtml")

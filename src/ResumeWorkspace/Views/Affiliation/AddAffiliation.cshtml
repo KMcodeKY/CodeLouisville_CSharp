@@ -1,8 +1,10 @@
 ﻿@model ResumeWorkspace.Models.Affiliation
 
-@{
-    ViewBag.Title = "Add Entry";
+@section Home_About {
+    <link href="@Url.Content("~/Content/employment_employment.css")" rel="stylesheet" type="text/css" />
 }
+
+<h2 class="form-title"><strong>Add Affiliation</strong></h2>
 
 @Html.Partial("~/Views/Affiliation/_Affiliation.cshtml")
 

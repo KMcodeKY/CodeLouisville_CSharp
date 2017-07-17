@@ -17,6 +17,7 @@ namespace ResumeWorkspace.Controllers
         public ActionResult AddAffiliation()
         {
             var temp = new Affiliation() { };
+            temp.StartDate = DateTime.Now;
             return View("~/Views/Affiliation/AddAffiliation.cshtml", temp);
         }
 
@@ -25,10 +26,15 @@ namespace ResumeWorkspace.Controllers
         {
             //Includes PersonId for Employment Addition
             Person myPerson = db.Person.SingleOrDefault(user => user.Id == 1);
-            myPerson.AddAffiliation(affiliation);
 
-            db.AddAffiliation(affiliation);
-            return RedirectToAction("About", "Home");
+            if (ModelState.IsValid)
+            {
+                myPerson.AddAffiliation(affiliation);
+                db.AddAffiliation(affiliation);
+                return RedirectToAction("About", "Home");
+            } else {
+                return View("~/Views/Affiliation/AddAffiliation.cshtml", affiliation);
+            }
         }
 
         public ActionResult EditAffiliation(int? id)
@@ -45,9 +51,14 @@ namespace ResumeWorkspace.Controllers
         [HttpPost]
         public ActionResult EditAffiliation(Affiliation affiliation)
         {
-            db.EditAffiliation(affiliation);
-            db.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            if (ModelState.IsValid)
+            {
+                db.EditAffiliation(affiliation);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Home");
+            } else {
+                return View("~/Views/Affiliation/EditAffiliation.cshtml", affiliation);
+            }
         }
 
         public ActionResult DeleteAffiliation(int? id)

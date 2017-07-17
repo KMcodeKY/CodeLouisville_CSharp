@@ -52,9 +52,15 @@ namespace ResumeWorkspace.Controllers
         [HttpPost]
         public ActionResult EditEducation(Education education)
         {
-            db.EditEducation(education);
-            db.SaveChanges();
-            return RedirectToAction("Index", "Home");
+
+            if (ModelState.IsValid)
+            {
+                db.EditEducation(education);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Home");
+            } else {
+                return View("~/Views/Education/EditEducation.cshtml", education);
+            }
         }
 
         public ActionResult DeleteEducation(int? id)

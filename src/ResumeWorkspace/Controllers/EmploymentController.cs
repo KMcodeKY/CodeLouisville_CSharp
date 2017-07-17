@@ -51,9 +51,15 @@ namespace ResumeWorkspace.Controllers
         [HttpPost]
         public ActionResult EditEmployment(Employment employment)
         {
-            db.EditEmployment(employment);
-            db.SaveChanges();
-            return RedirectToAction("Index", "Home");
+
+            if (ModelState.IsValid)
+            {
+                db.EditEmployment(employment);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Home");
+            } else {
+                return View("~/Views/Employment/EditEmployment.cshtml", employment);
+            }
         }
 
         public ActionResult DeleteEmployment(int? id)
