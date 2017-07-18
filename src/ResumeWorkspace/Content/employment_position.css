@@ -1,0 +1,28 @@
+﻿body {
+    background-color: #e6e6e6;
+}
+
+.pos-header {
+    font-size: 1.5em;
+    border-style: solid;
+    border-color: #bfbfbf;
+    background-color: #bfbfbf;
+    border-width: 2px;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.pos-del {
+    padding-top: 20px;
+}
+
+.pos-con,
+.pos-acc {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-style: dotted;
+    border-color: #bfbfbf;
+    border-width: 2px;
+    margin-top: 10px;
+}

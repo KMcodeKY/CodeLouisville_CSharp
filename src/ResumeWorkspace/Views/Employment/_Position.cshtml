@@ -2,94 +2,135 @@
 
 @using (Html.BeginForm())
 {
-    <div class="row">
-
-        <div class="col-md-6">
+    @Html.ValidationSummary("The following errors were found:", new { @class = "alert alert-danger" })
 
                 @Html.HiddenFor(m => m.EmploymentId)
                 @Html.HiddenFor(m => m.Id)
 
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Title, new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
-                </div>
+    <div class="row">
+        <div class="col-sm-6 col-xs-12 form-group">
+            @Html.LabelFor(m => m.Title, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+        </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(m => m.StartDate, new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.StartDate, "{0:d}", new { @class = "form-control datepicker" })
-                </div>
+        <div class="col-sm-3 col-xs-6 form-group">
+            @Html.LabelFor(m => m.StartDate, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.StartDate, "{0:d}", new { @class = "form-control datepicker" })
+        </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(m => m.EndDate, new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.EndDate, "{0:d}", new { @class = "form-control datepicker" })
-                </div>
+        <div class="col-sm-3 col-xs-6 form-group">
+            @Html.LabelFor(m => m.EndDate, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.EndDate, "{0:d}", new { @class = "form-control datepicker" })
+        </div>
 
-            <h2>Accomplishments</h2>
-            <div class="pull-right">
-                <a href="@Url.Action("AddAccomplishment","Employment", new { id = Model.Id })" class="btn btn-warning btn-sm margin-right">
-                    <span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> Add</span>
-                </a>
-            </div>
+        <span class="clearfix"></span>
+        <div class="pos-header container">
+            <span class="v-align"><strong>Accomplishments</strong></span>
+            <a href="@Url.Action("AddAccomplishment","Employment", new { id = Model.Id })" class="btn btn-success margin-right pull-right v-align">
+                <span class="glyphicon glyphicon-plus"></span><span>&nbsp; Add</span>
+            </a>
+        </div>
+        <span class="clearfix"></span>
 
-            @for (int i = 0; i < Model.Accomplishments.Count(); i++)
+        @for (int i = 0; i < Model.Accomplishments.Count(); i++)
+        {
+            using (Html.BeginCollectionItem("Accomplishments"))
             {
-                using (Html.BeginCollectionItem("Accomplishments"))
-                {
-                <div class="form-group">
-                    @Html.HiddenFor(m => m.Accomplishments.ElementAt(i).Id)
-                    @Html.HiddenFor(m => m.Accomplishments.ElementAt(i).PositionId)
+                <span class="clearfix"></span>
+                <div class="pos-acc">
+                    <div class="col-xs-12">
+                        @Html.HiddenFor(m => m.Accomplishments.ElementAt(i).Id)
+                        @Html.HiddenFor(m => m.Accomplishments.ElementAt(i).PositionId)
+                        @Html.TextAreaFor(m => m.Accomplishments.ElementAt(i).Description, new { @class = "form-control", rows = "4", cols = "12" })
+                    </div>
 
-                    @Html.TextAreaFor(m => m.Accomplishments.ElementAt(i).Description)
-                </div>
-                }
-
-                    <div class="pull-right">
-                        <a href="@Url.Action("DeleteAccomplishment", "Employment", new { id = Model.Accomplishments.ElementAt(i).Id })" class="btn btn-warning btn-sm margin-right">
-                            <span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> Delete</span>
+                    <div class="col-xs-12 center v-align pos-del">
+                        <a href="@Url.Action("DeleteAccomplishment", "Employment", new { id = Model.Accomplishments.ElementAt(i).Id })" class="btn btn-danger margin-right">
+                            <span class="glyphicon glyphicon-remove"></span><span> &nbsp; Delete</span>
                         </a>
                     </div>
-                }
+                </div>
+                <span class="clearfix"></span>
+            }
+        }
 
-            <h2>Contacts</h2>
-            <div class="pull-right">
-                <a href="@Url.Action("AddContact","Employment", new { id = Model.Id})" class="btn btn-warning btn-sm margin-right">
-                    <span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> Add</span>
-                </a>
-            </div>
-            @for (int i = 0; i < Model.Contacts.Count(); i++)
+        <span class="clearfix"></span>
+        <div class="pos-header container">
+            <span class="v-align"><strong>Contacts</strong></span>
+            <a href="@Url.Action("AddContact","Employment", new { id = Model.Id })" class="btn btn-success margin-right pull-right v-align">
+                <span class="glyphicon glyphicon-plus"></span><span>&nbsp; Add</span>
+            </a>
+        </div>
+        <span class="clearfix"></span>
+
+        @for (int i = 0; i < Model.Contacts.Count(); i++)
+        {
+            using (Html.BeginCollectionItem("Contacts"))
             {
-                using (Html.BeginCollectionItem("Contacts"))
-                {
-                <div class="form-group">
+                <span class="clearfix"></span>
+                <div class="pos-con">
                     @Html.HiddenFor(m => m.Contacts.ElementAt(i).Id)
                     @Html.HiddenFor(m => m.Contacts.ElementAt(i).PositionId)
 
-                    @Html.TextBoxFor(m => m.Contacts.ElementAt(i).Name)
-                    @Html.TextBoxFor(m => m.Contacts.ElementAt(i).Title)
-                    @Html.TextBoxFor(m => m.Contacts.ElementAt(i).Email)
-                    @Html.TextBoxFor(m => m.Contacts.ElementAt(i).Phone)
-                </div>
-                }
-
-                    <div class="pull-right">
-                        <a href="@Url.Action("DeleteContact", "Employment", new { id = Model.Contacts.ElementAt(i).Id })" class="btn btn-warning btn-sm margin-right">
-                            <span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> Delete</span>
-                        </a>
-                    </div>
-            }
-
-                    <div class="col-md-12">
-                        <div class="pad-top">
-                            <button type="submit" class="btn btn-success btn-lg margin-right">
-                                <span class="glyphicon glyphicon-save"></span> Save
-                            </button>
-                            <a href="@Url.Action("Index", "Home")" class="btn btn-warning btn-lg">
-                                <span class="glyphicon glyphicon-remove"></span> Cancel
-                            </a>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="col-sm-1 col-xs-12">
+                                @Html.LabelFor(m => m.Contacts.ElementAt(i).Name, new { @class = "control-label" })
+                            </div>
+                            <div class="col-sm-5 col-xs-12">
+                                @Html.TextBoxFor(m => m.Contacts.ElementAt(i).Name, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-1 col-xs-12">
+                                @Html.LabelFor(m => m.Contacts.ElementAt(i).Email, new { @class = "control-label" })
+                            </div>
+                            <div class="col-sm-5 col-xs-12">
+                                @Html.TextBoxFor(m => m.Contacts.ElementAt(i).Email, new { @class = "form-control" })
+                            </div>
                         </div>
                     </div>
 
-                </div>
-</div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="col-sm-1 col-xs-12">
+                                @Html.LabelFor(m => m.Contacts.ElementAt(i).Title, new { @class = "control-label" })
+                            </div>
+                            <div class="col-sm-5 col-xs-12">
+                                @Html.TextBoxFor(m => m.Contacts.ElementAt(i).Title, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-1 col-xs-12">
+                                @Html.LabelFor(m => m.Contacts.ElementAt(i).Phone, new { @class = "control-label" })
+                            </div>
+                            <div class="col-sm-5 col-xs-12">
+                                @Html.TextBoxFor(m => m.Contacts.ElementAt(i).Phone, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
 
-}
+                    <div class="col-xs-12 center v-align pos-del">
+                        <a href="@Url.Action("DeleteContact", "Employment", new { id = Model.Contacts.ElementAt(i).Id })" class="btn btn-danger margin-right v-align">
+                            <span class="glyphicon glyphicon-remove"></span><span> &nbsp; Delete</span>
+                        </a>
+                    </div>
+
+                    </div>
+                    <span class="clearfix"></span>
+                    }
+
+                    }
+
+                    <div class="col-sm-12 col-xs-12 center form-btn">
+                        <button type="submit" class="btn btn-success btn-lg btn-space">
+                            <span class="glyphicon glyphicon-save"></span> Save
+                        </button>
+                        <a href="@Url.Action("Index", "Home")" class="btn btn-warning btn-lg">
+                            <span class="glyphicon glyphicon-remove"></span> Cancel
+                        </a>
+                    </div>
+
+
+                </div>
+            }

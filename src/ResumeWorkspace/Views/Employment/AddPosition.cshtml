@@ -1,7 +1,10 @@
 ﻿@model ResumeWorkspace.Models.Position
 
-@{
-    ViewBag.Title = "Add Entry";
+@section Home_About {
+    <link href="@Url.Content("~/Content/employment_employment.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/employment_position.css")" rel="stylesheet" type="text/css" />
 }
+
+<h2 class="form-title"><strong>Add Position</strong></h2>
 
 @Html.Partial("~/Views/Employment/_Position.cshtml")

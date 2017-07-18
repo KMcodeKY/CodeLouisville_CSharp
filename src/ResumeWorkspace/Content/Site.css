@@ -46,3 +46,7 @@ body {
 .btn-space {
     margin-right: 10px;
 }
+
+.row {
+    margin: 0;
+}

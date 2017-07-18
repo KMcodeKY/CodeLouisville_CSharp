@@ -75,5 +75,6 @@ namespace ResumeWorkspace.Controllers
             db.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
+        
     }
 }
