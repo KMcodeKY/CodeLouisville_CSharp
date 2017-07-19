@@ -176,9 +176,22 @@ namespace ResumeWorkspace
             this.SaveChanges();
         }
 
+        //Error in deleting position//
+
         public void DeletePosition(Position position)
         {
+            foreach (var acc in position.Accomplishments)
+            {
+                this.Entry(acc).State = EntityState.Deleted;
+            }
+
+            foreach (var con in position.Contacts)
+            {
+                this.Entry(con).State = EntityState.Deleted;
+            }
+
             this.Entry(position).State = EntityState.Deleted;
+
             this.SaveChanges();
         }
 

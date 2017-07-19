@@ -1,0 +1,15 @@
+﻿@model ResumeWorkspace.Models.Employment
+
+@section Home_About {
+    <link href="@Url.Content("~/Content/employment_employment.css")" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        $('.form-control').prop('readonly', true);
+        $('.form-control').removeClass("datepicker");
+    </script>
+    }
+
+<h2 class="form-title"><strong>Delete Employment</strong></h2>
+
+<h4 class="form-sub-title"><strong>Are you sure you want to delete?</strong></h4>
+
+@Html.Partial("~/Views/Employment/_Employment.cshtml")

@@ -69,6 +69,12 @@ namespace ResumeWorkspace.Controllers
 
             if (skill == null) { return HttpNotFound(); }
 
+            return View("~/Views/Skill/DeleteSkill.cshtml", skill);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteSkill(Skill skill)
+        {
             db.DeleteSkill(skill);
             db.SaveChanges();
             return RedirectToAction("Index", "Home");

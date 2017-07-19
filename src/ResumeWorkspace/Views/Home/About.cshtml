@@ -194,21 +194,21 @@
 
                     <div class="section-details container">
                         <div class="row">
-                            <div class="col-sm-4">@edu.Institution</div>
+                            <div class="col-sm-4 col-rm-lf-pd">@edu.Institution</div>
                             @if (@edu.GPA > 0)
                             {
-                                <div class="col-sm-4">GPA: @edu.GPA.ToString("#.##")</div>
+                                <div class="col-sm-4 col-rm-lf-pd">GPA: @edu.GPA.ToString("#.##")</div>
                             }
                         </div>
                         <div class="row">
-                            <div class="col-sm-4">Start Date: @edu.StartDate.ToShortDateString()</div>
+                            <div class="col-sm-4 col-rm-lf-pd">Start Date: @edu.StartDate.ToShortDateString()</div>
                             @if (edu.EndDate.HasValue)
                             {
-                                <div class="col-sm-4">End Date: @edu.EndDate.Value.ToShortDateString()</div>
+                                <div class="col-sm-4 col-rm-lf-pd">End Date: @edu.EndDate.Value.ToShortDateString()</div>
                             }
                             else
                             {
-                                <div class="col-sm-4">End Date: </div>
+                                <div class="col-sm-4 col-rm-lf-pd">End Date: </div>
                             }
                         </div>
                         <div class="section-details-edu">@edu.Accomplishments</div>
@@ -263,7 +263,7 @@
                                 {
                                     <div>Completion Date: </div>
                                 }
-                                <div class="section-details-edu">@cer.Description</div>
+                                <div class="section-details-edu"><em>@cer.Description</em></div>
                             </div>
     }
 
@@ -347,16 +347,16 @@
                             <div class="section-details container">
                                 <div>@afl.Organization</div>
                                 <div class="row">
-                                    <div class="col-sm-4">Start Date: @afl.StartDate.ToShortDateString()</div>
+                                    <div class="col-sm-4 col-rm-lf-pd">Start Date: @afl.StartDate.ToShortDateString()</div>
                                     @if (afl.EndDate.HasValue)
                                     {
-                                        <div class="col-sm-4">End Date: @afl.EndDate.Value.ToShortDateString()</div>
+                                        <div class="col-sm-4 col-rm-lf-pd">End Date: @afl.EndDate.Value.ToShortDateString()</div>
                                     }
                                     else
                                     {
-                                        <div class="col-sm-4">End Date: </div>
+                                        <div class="col-sm-4 col-rm-lf-pd">End Date: </div>
                                     }
                                 </div>
-                                <div class="section-details-edu">@afl.Description</div>
+                                <div class="section-details-edu"><em>@afl.Description</em></div>
                             </div>
     }

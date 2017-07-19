@@ -68,9 +68,16 @@ namespace ResumeWorkspace.Controllers
 
             if (certification == null) { return HttpNotFound(); }
 
+            return View("~/Views/Certification/DeleteCertification.cshtml", certification);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteCertification(Certification certification)
+        {
             db.DeleteCertification(certification);
             db.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
+
     }
 }

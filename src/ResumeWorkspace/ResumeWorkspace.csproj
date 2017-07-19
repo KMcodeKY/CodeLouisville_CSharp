@@ -239,6 +239,12 @@
     <Content Include="Views\Employment\_Position.cshtml" />
     <Content Include="Views\Employment\EditPosition.cshtml" />
     <Content Include="Views\Employment\AddPosition.cshtml" />
+    <Content Include="Views\Education\DeleteEducation.cshtml" />
+    <Content Include="Views\Affiliation\DeleteAffiliation.cshtml" />
+    <Content Include="Views\Certification\DeleteCertification.cshtml" />
+    <Content Include="Views\Employment\DeleteEmployment.cshtml" />
+    <Content Include="Views\Employment\DeletePosition.cshtml" />
+    <Content Include="Views\Skill\DeleteSkill.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,17 @@
+﻿@model ResumeWorkspace.Models.Position
+
+@section Home_About {
+    <link href="@Url.Content("~/Content/employment_employment.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/employment_position.css")" rel="stylesheet" type="text/css" />
+    <script>
+        $('.form-control').prop('readonly', true);
+        $('.form-control').removeClass("datepicker");
+        $('.btn-hide').hide();
+    </script>
+}
+
+<h2 class="form-title"><strong>Delete Position</strong></h2>
+
+<h4 class="center"><strong>Are you sure you want to delete?</strong></h4>
+
+@Html.Partial("~/Views/Employment/_Position.cshtml")

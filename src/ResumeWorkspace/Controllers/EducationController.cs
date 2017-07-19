@@ -71,10 +71,16 @@ namespace ResumeWorkspace.Controllers
 
             if (education == null) { return HttpNotFound(); }
 
+            return View("~/Views/Education/DeleteEducation.cshtml", education);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteEducation(Education education)
+        {
             db.DeleteEducation(education);
             db.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
-        
+
     }
 }

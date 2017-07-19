@@ -69,6 +69,12 @@ namespace ResumeWorkspace.Controllers
 
             if (affiliation == null) { return HttpNotFound(); }
 
+            return View("~/Views/Affiliation/DeleteAffiliation.cshtml", affiliation);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteAffiliation(Affiliation affiliation)
+        {
             db.DeleteAffiliation(affiliation);
             db.SaveChanges();
             return RedirectToAction("Index", "Home");

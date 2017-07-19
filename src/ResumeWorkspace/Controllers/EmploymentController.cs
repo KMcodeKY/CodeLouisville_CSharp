@@ -70,6 +70,12 @@ namespace ResumeWorkspace.Controllers
 
             if (employment == null) { return HttpNotFound(); }
 
+            return View("~/Views/Employment/DeleteEmployment.cshtml", employment);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteEmployment(Employment employment)
+        {
             db.DeleteEmployment(employment);
             db.SaveChanges();
             return RedirectToAction("Index", "Home");
@@ -176,6 +182,12 @@ namespace ResumeWorkspace.Controllers
 
             if (position == null) { return HttpNotFound(); }
 
+            return View("~/Views/Employment/DeletePosition.cshtml", position);
+        }
+
+        [HttpPost]
+        public ActionResult DeletePosition(Position position)
+        {
             db.DeletePosition(position);
             db.SaveChanges();
             return RedirectToAction("Index", "Home");

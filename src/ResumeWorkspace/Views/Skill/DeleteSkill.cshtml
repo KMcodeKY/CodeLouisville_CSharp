@@ -1,0 +1,17 @@
+﻿@model ResumeWorkspace.Models.Skill
+
+@section Home_About {
+    <link href="@Url.Content("~/Content/employment_employment.css")" rel="stylesheet" type="text/css" />
+    <script>
+        $('.form-control').prop('readonly', true);
+        $('.form-control').removeClass("datepicker");
+    </script>
+}
+
+<h2 class="form-title"><strong>Delete Skill</strong></h2>
+
+<h4 class="center"><strong>Are you sure you want to delete?</strong></h4>
+
+@Html.Partial("~/Views/Skill/_Skill.cshtml")
+
+

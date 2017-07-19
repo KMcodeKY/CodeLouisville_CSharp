@@ -26,7 +26,7 @@
         <span class="clearfix"></span>
         <div class="pos-header container">
             <span class="v-align"><strong>Accomplishments</strong></span>
-            <a href="@Url.Action("AddAccomplishment","Employment", new { id = Model.Id })" class="btn btn-success margin-right pull-right v-align">
+            <a href="@Url.Action("AddAccomplishment","Employment", new { id = Model.Id })" class="btn btn-success margin-right pull-right v-align btn-hide">
                 <span class="glyphicon glyphicon-plus"></span><span>&nbsp; Add</span>
             </a>
         </div>
@@ -45,7 +45,7 @@
                     </div>
 
                     <div class="col-xs-12 center v-align pos-del">
-                        <a href="@Url.Action("DeleteAccomplishment", "Employment", new { id = Model.Accomplishments.ElementAt(i).Id })" class="btn btn-danger margin-right">
+                        <a href="@Url.Action("DeleteAccomplishment", "Employment", new { id = Model.Accomplishments.ElementAt(i).Id })" class="btn btn-danger margin-right btn-hide">
                             <span class="glyphicon glyphicon-remove"></span><span> &nbsp; Delete</span>
                         </a>
                     </div>
@@ -57,7 +57,7 @@
         <span class="clearfix"></span>
         <div class="pos-header container">
             <span class="v-align"><strong>Contacts</strong></span>
-            <a href="@Url.Action("AddContact","Employment", new { id = Model.Id })" class="btn btn-success margin-right pull-right v-align">
+            <a href="@Url.Action("AddContact","Employment", new { id = Model.Id })" class="btn btn-success margin-right pull-right v-align btn-hide">
                 <span class="glyphicon glyphicon-plus"></span><span>&nbsp; Add</span>
             </a>
         </div>
@@ -111,7 +111,7 @@
                     </div>
 
                     <div class="col-xs-12 center v-align pos-del">
-                        <a href="@Url.Action("DeleteContact", "Employment", new { id = Model.Contacts.ElementAt(i).Id })" class="btn btn-danger margin-right v-align">
+                        <a href="@Url.Action("DeleteContact", "Employment", new { id = Model.Contacts.ElementAt(i).Id })" class="btn btn-danger margin-right btn-hide">
                             <span class="glyphicon glyphicon-remove"></span><span> &nbsp; Delete</span>
                         </a>
                     </div>
