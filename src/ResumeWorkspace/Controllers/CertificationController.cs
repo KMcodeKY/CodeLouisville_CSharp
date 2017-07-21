@@ -54,7 +54,7 @@ namespace ResumeWorkspace.Controllers
             {
                 db.EditCertification(certification);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("About", "Home");
             } else {
                 return View("~/Views/Certification/EditCertification.cshtml", certification);
             }
@@ -76,7 +76,7 @@ namespace ResumeWorkspace.Controllers
         {
             db.DeleteCertification(certification);
             db.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("About", "Home");
         }
 
     }

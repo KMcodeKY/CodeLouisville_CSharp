@@ -55,7 +55,7 @@ namespace ResumeWorkspace.Controllers
             {
                 db.EditAffiliation(affiliation);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("About", "Home");
             } else {
                 return View("~/Views/Affiliation/EditAffiliation.cshtml", affiliation);
             }
@@ -77,7 +77,7 @@ namespace ResumeWorkspace.Controllers
         {
             db.DeleteAffiliation(affiliation);
             db.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("About", "Home");
         }
     }
 }

@@ -55,7 +55,7 @@ namespace ResumeWorkspace.Controllers
             {
                 db.EditSkill(skill);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("About", "Home");
             } else {
                 return View("~/Views/Skill/EditSkill.cshtml", skill);
             }
@@ -77,7 +77,7 @@ namespace ResumeWorkspace.Controllers
         {
             db.DeleteSkill(skill);
             db.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("About", "Home");
         }
     }
 }

@@ -15,7 +15,7 @@ namespace ResumeWorkspace
         {
             var person1 = new Person()
             {
-                Name = "Alex Jones"
+                Name = "Alex Moore"
             };
 
             var employment1 = new Employment()

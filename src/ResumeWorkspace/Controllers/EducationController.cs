@@ -57,7 +57,7 @@ namespace ResumeWorkspace.Controllers
             {
                 db.EditEducation(education);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("About", "Home");
             } else {
                 return View("~/Views/Education/EditEducation.cshtml", education);
             }
@@ -79,7 +79,7 @@ namespace ResumeWorkspace.Controllers
         {
             db.DeleteEducation(education);
             db.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("About", "Home");
         }
 
     }

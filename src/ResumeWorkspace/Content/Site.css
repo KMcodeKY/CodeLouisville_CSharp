@@ -50,3 +50,40 @@ body {
 .row {
     margin: 0;
 }
+
+.jumbotron {
+    padding: 20px;
+    background-color: #bfbfbf;
+}
+
+.jumbotron p {
+    padding-top: 10px;
+}
+
+.log-in {
+    padding-bottom: 20px;
+}
+
+.log-in-message {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 6px;
+    background-color: #bfbfbf;
+}
+
+.contact-message {
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 600px) {
+    .log-in {
+        font-size: 1.25em;
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .log-in {
+        float: right;
+    }
+}

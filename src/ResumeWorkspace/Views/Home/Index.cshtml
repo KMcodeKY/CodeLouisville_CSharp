@@ -3,20 +3,29 @@
     ViewBag.Title = "Home Page";
 }
 
+@*Welcome Page*@
 
-<h1>You are logged in @Model.Name!</h1>
+<div class="row">
+    <h3 class="log-in"><span class="glyphicon glyphicon-log-in"></span>  You are logged in @Model.Name!</h3>
+</div>
+
+@*Welcome Page - Main Section*@
 
 <div class="jumbotron">
     <h1>Welcome back to your Resume Workspace!</h1>
-    <p class="lead">This repository site allows you to document all aspects of your professional career for a detailed and continuous timeline of your accomplishments.</p>
+    <p class="lead">This database site allows you to document all aspects of your professional career for a detailed and continuous timeline of accomplishments.</p>
 </div>
 
+@*Welcome Page - Lower Section*@
+
 <div class="row">
-    <div class="col-md-4">
+    <div class="log-in-message col-sm-6 col-sm-offset-3">
         <h2>Let's get to Work</h2>
+        <div class="container">
         <p>
-            Start reviewing and updating your workspace now!
+            Start reviewing and updating your resume workspace now!
         </p>
-        <p><a class="btn btn-default" href="@Url.Action("About", "Home")">@Model.Name</a></p>
+        <p><a class="btn btn-default pull-right" href="@Url.Action("About", "Home")"><strong>@Model.Name</strong></a></p>
+    </div>
     </div>
 </div>

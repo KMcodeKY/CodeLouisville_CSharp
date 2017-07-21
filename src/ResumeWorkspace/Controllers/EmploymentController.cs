@@ -56,7 +56,7 @@ namespace ResumeWorkspace.Controllers
             {
                 db.EditEmployment(employment);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("About", "Home");
             } else {
                 return View("~/Views/Employment/EditEmployment.cshtml", employment);
             }
@@ -78,10 +78,8 @@ namespace ResumeWorkspace.Controllers
         {
             db.DeleteEmployment(employment);
             db.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("About", "Home");
         }
-
-        //Accomplishment
 
         public ActionResult AddAccomplishment(int? id)
         {
@@ -115,6 +113,7 @@ namespace ResumeWorkspace.Controllers
         public ActionResult AddContact(int? id)
         {
             var temp = new Contact() { };
+            temp.Name = "Enter Name Here";
             //Includes PositionId for Contact Addition
             Position myPosition = db.Position.SingleOrDefault(user => user.Id == id);
             myPosition.AddContact(temp);
@@ -145,7 +144,7 @@ namespace ResumeWorkspace.Controllers
         {
             var temp = new Position() {};
             temp.StartDate = DateTime.Now;
-            temp.Title = "Enter Title";
+            temp.Title = "Enter Title Here";
 
             //Includes EmploymentId for Position Addition
             Employment myEmployment = db.Employment.SingleOrDefault(user => user.Id == id);
@@ -168,10 +167,14 @@ namespace ResumeWorkspace.Controllers
         [HttpPost]
         public ActionResult EditPosition(Position position)
         {
-            db.EditPosition(position);
-            db.SaveChanges();
-            //RefreshPositionScreen(position);
-            return RedirectToAction("Index", "Home");
+            if (ModelState.IsValid)
+            {
+                db.EditPosition(position);
+                db.SaveChanges();
+                return RedirectToAction("About", "Home");
+            } else {
+                return View("~/Views/Employment/EditPosition.cshtml", position);
+            }
         }
 
         public ActionResult DeletePosition(int? id)
@@ -190,7 +193,7 @@ namespace ResumeWorkspace.Controllers
         {
             db.DeletePosition(position);
             db.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("About", "Home");
         }
 
     }

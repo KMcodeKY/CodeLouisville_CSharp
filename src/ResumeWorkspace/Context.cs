@@ -27,7 +27,7 @@ namespace ResumeWorkspace
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
-        //Get From ID
+        //Get object from ID
 
         public Employment GetEmployment(int id)
         {
@@ -69,7 +69,7 @@ namespace ResumeWorkspace
             return (from x in Skill where x.Id == id select x).First();
         }
 
-        //Add
+        //Add object
 
         public void AddEmployment(Employment employment)
         {
@@ -119,7 +119,7 @@ namespace ResumeWorkspace
             this.SaveChanges();
         }
 
-        //Edit
+        //Edit object
 
         public void EditEmployment(Employment employment)
         {
@@ -168,7 +168,7 @@ namespace ResumeWorkspace
             this.SaveChanges();
         }
 
-        //Delete
+        //Delete object
 
         public void DeleteEmployment(Employment employment)
         {
@@ -176,21 +176,11 @@ namespace ResumeWorkspace
             this.SaveChanges();
         }
 
-        //Error in deleting position//
-
         public void DeletePosition(Position position)
         {
-            foreach (var acc in position.Accomplishments)
-            {
-                this.Entry(acc).State = EntityState.Deleted;
-            }
+            Position test = Position.Find(position.Id);
 
-            foreach (var con in position.Contacts)
-            {
-                this.Entry(con).State = EntityState.Deleted;
-            }
-
-            this.Entry(position).State = EntityState.Deleted;
+            Position.Remove(test);
 
             this.SaveChanges();
         }
